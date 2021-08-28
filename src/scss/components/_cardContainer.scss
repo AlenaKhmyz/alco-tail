@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    background-color: rosybrown;
+    
+
+    &__name {
+        width: 10%;
+        height: 10%;
+        margin: 0;
+        background-color: rgb(245, 190, 190);
+    }
+
+    &__button {
+        margin: 0 auto;
+        width: 20%;
+        height: 30%;
+        background-color: rgb(235, 135, 135);
+        
+    }
+}
