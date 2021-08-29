@@ -5,7 +5,7 @@ import CardItem from '../cardItem'
 const CardContainer = (props) => {
     return (
         <div className="container">
-            <h2 className="container__name">Vodka</h2>
+            <span>{props.name}</span>
             <CardItem />
             <button className="container__button">+</button>
         </div>

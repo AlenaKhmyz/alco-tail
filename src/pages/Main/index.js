@@ -1,13 +1,14 @@
 import React from 'react'
 import Search from '../../components/search'
-import CardContainer from '../../components/cardContainer';
+import Navigator from '../Navigation'
+
 
 function MainPage() {
 
     return(
         <div className="main">
             <Search />
-            <CardContainer />
+            <Navigator />
         </div>
     )
 }
