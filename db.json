@@ -1,0 +1,13 @@
+{
+    "card": [
+      { "id": 1, "title": "cocktail name", "author": "typicode" }
+    ],
+    "ingredients": [
+      { "id": 1, "body": "some ingredient" },
+      { "id": 2, "body": "some ingredient" },
+      { "id": 3, "body": "some ingredient" },
+    ],
+    "video": [
+        { "name": "typicode" }
+    ]
+}
