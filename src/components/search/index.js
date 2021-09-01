@@ -5,7 +5,7 @@ const Search = (props) => {
         <form>
             <p>
                 <input type="search" className="main__search" placeholder="Site Search" /> 
-                <input clasName="main_btn" type="submit" value="Find" />     
+                <input className="main_btn" type="submit" value="Find" />     
             </p>
         </form>
     );

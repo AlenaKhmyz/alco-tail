@@ -1,10 +1,10 @@
 import React from 'react'
-import CardContainer from '../../components/cardContainer';
+import Cocktails from '../../components/cardContainer';
 
 function WinePage() {
     return (
        <div>
-           <CardContainer />
+           <Cocktails />
        </div> 
     )
 }

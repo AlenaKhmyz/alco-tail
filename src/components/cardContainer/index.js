@@ -1,34 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-
 import '../../scss/components/_cardContainer.scss'
 import CardItem from '../cardItem'
 
-const CardContainer = (props) => {
-    const [cards, setCards] = useState([])
+
+// const CardContainer = (props) => {
+//     const [cocktails, setCocktails] = useState([])
     
 
-    const result = async () =>  {
-        try {
-            const response = await axios.get(`http://localhost:3004/card`)
-            console.log(response)
 
-            setCards(response.data)
-        } catch (err) {
-            console.log(err)
+    const Cocktails = (props) =>  {
+        const [cocktails, setCocktails] = useState([])
+
+        const getCocktails = async () => {
+           const response = await axios.get(`http://localhost:3004/cocktails`)
+            setCocktails(response.data)
+        } 
+
+        useEffect(() => {
+            getCocktails()
+        }, [])
+
+        const createCocktails= async () => {
+           const response =  await axios.post(`http://localhost:3004/cocktails`, {
+                title: 'tails',
+                ingredients: [
+                    {
+                        body: "some ingredient"
+                    
+                    }
+                ]
+            })
+
+            setCocktails([...cocktails, response.data])
         }
+
+        
+        return (
+            <div className="container">
+                <span>{props.name}</span>
+                {cocktails.map(({ title, ingredients }) => {
+                    return (           
+                        
+                        <CardItem title={title} ingredients={ingredients}/>
+                    )
+                })}
+                 <button className="container__button" onClick={createCocktails}> + </button>
+            </div>
+        );
     }
 
-    return (
-        <div className="container">
-            <span>{props.name}</span>
-            <CardItem />
-            <button className="container__button" onClick={result}> + </button>
-            {cards.map(({ _id, title, author, ingredients: {body}, video: {name}}) => {
-                return <div key={ _id}>{title} {author} {body} {name}</div>
-            })}
-        </div>
-    );
-}
+    //     return (
+    //         <div className="container">
+    //             <span>{props.name}</span>
 
-export default CardContainer;
+    //             <button className="container__button" onClick={result}> + </button>
+    //             {cocktails.map(({ title, ingredients }) => {
+    //                 return (           
+                        
+    //                     <CardItem title={title} ingredients={ingredients}/>
+    //                 )
+    //             })}
+    //         </div>
+    //     );
+    // }
+
+export default Cocktails;
