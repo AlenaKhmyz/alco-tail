@@ -39,10 +39,10 @@ import CardItem from '../cardItem'
         return (
             <div className="container">
                 <span>{props.name}</span>
-                {cocktails.map(({ title, ingredients }) => {
+                {cocktails.map(({ title, ingredients, description, video }) => {
                     return (           
                         
-                        <CardItem title={title} ingredients={ingredients}/>
+                        <CardItem title={title} ingredients={ingredients} description={description} video={video}/>
                     )
                 })}
                  <button className="container__button" onClick={createCocktails}> + </button>

@@ -14,10 +14,15 @@ const CardItem = (props) => {
                             )
                         })}
                     </ul>
-                    <div className="cocktail-card__block__inner__description"></div>
+                    <div className="cocktail-card__block__inner__description">{props.description}</div>
                     <button className="cocktail-card__block__inner__btn"></button>
                 </div>
-                <div className="cocktail-card__block__video"></div>
+                <iframe src={props.video}
+                    frameBorder='0'
+                    allow='autoplay; encrypted-media'
+                    allowFullScreen
+                    className=""
+                /> 
             </div>
             
         </div>
