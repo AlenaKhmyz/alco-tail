@@ -1,13 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import {Route, BrowserRouter, Switch, Link} from 'react-router-dom';
 
-import MainPage from './pages/Main'
+import { ROUTES } from './const'
+
+import BarPage from './pages/barPages/Bar'
+import HomePage from './pages/Home'
 
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      <BrowserRouter>
+        <Switch>
+          <Route path={ROUTES.BAR}>
+            <BarPage />
+          </Route>
+          <Route path={ROUTES.HOME} component={HomePage} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
