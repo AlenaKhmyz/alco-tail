@@ -8,7 +8,7 @@ function HomePage() {
     return(
         <div className="home">
                 <Link to = {ROUTES.BAR}>Бар</Link>
-                <button className="kitchen" >Кухня</button>
+                <Link to = {ROUTES.KITCHEN} >Кухня</Link>
         </div>
     )
 }
