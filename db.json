@@ -1,15 +1,137 @@
 {
-    "card": [
-      { "id": 1, "title": "cocktail name", "author": "typicode",
-        "ingredients": [
-            { "id": 1, "body": "some ingredient" },
-            { "id": 2, "body": "some ingredient" },
-            { "id": 3, "body": "some ingredient" }
-        ],
-        "video": [
-            { "name": "typicode" }
-        ]
-    }  
-    ]
-    
+  "cocktails": [
+    {
+      "id": 1,
+      "title": "cocktail name",
+      "author": "typicode",
+      "ingredients": [
+        {
+          "id": 1,
+          "body": "vodka"
+        },
+        {
+          "id": 2,
+          "body": "tomato juice"
+        },
+        {
+          "id": 3,
+          "body": "pepper"
+        }
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at congue metus. Sed et malesuada sem. Fusce sed dui a erat blandit hendrerit. Curabitur quis arcu auctor ipsum facilisis sodales. Etiam imperdiet sed leo porttitor mollis. Donec vel urna facilisis, euismod mauris ut, sagittis orci. Nam commodo nulla at fringilla vulputate. Nullam ornare ligula ut congue vestibulum.",
+      "video": "https://www.youtube.com/embed/ES8vJcUqE7s"
+    },
+    {
+      "id": 2,
+      "title": "alcotail",
+      "author": "typicode",
+      "ingredients": [
+        {
+          "id": 1,
+          "body": "egg white"
+        },
+        {
+          "id": 2,
+          "body": "rum"
+        },
+        {
+          "id": 3,
+          "body": "lemon juice"
+        },
+        {
+          "id": 4,
+          "body": "sugar syrup"
+        }
+      ],
+      
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at congue metus. Sed et malesuada sem. Fusce sed dui a erat blandit hendrerit. Curabitur quis arcu auctor ipsum facilisis sodales. Etiam imperdiet sed leo porttitor mollis. Donec vel urna facilisis, euismod mauris ut, sagittis orci. Nam commodo nulla at fringilla vulputate. Nullam ornare ligula ut congue vestibulum.",
+      "video": "https://www.youtube.com/embed/3yOCk4Kn-Ss"
+    }
+  ], 
+
+  "dishes": [
+    {
+    "name": "dish name 1",
+    "shortDescription": "five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "description": "Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.",
+    "ingredients": [{
+      "name": "chicken",
+      "color": "rgb(132, 160, 236)",
+      "amount": 200,
+      "unit": "g"
+    }, {
+      "name": "dough",
+      "color": "rgb(136, 136, 136)",
+      "amount": 350,
+      "unit": "г"
+    }, {
+      "name": "jalapeno",
+      "color": "rgb(92, 197, 230)",
+      "amount": 20,
+      "unit": "g"
+    }],
+    "steps": []
+  }, {
+    "name": "dish name 2",
+    "shortDescription": "of Letraset sheets containing Lorem Ipsum passages, and more recently with",
+    "description": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc",
+    "ingredients": [{
+      "name": "шишки",
+      "color": "rgb(250, 226, 90)",
+      "amount": 400,
+      "unit": "кг"
+    }, {
+      "name": "желуди",
+      "color": "rgb(250, 141, 90)",
+      "amount": 100,
+      "unit": "т"
+    }, {
+      "name": "разъяснения",
+      "color": "rgb(247, 142, 247)",
+      "amount": 200,
+      "unit": "г"
+    },{
+      "name": "приветы",
+      "color": "rgb(143, 230, 86)",
+      "amount": 1,
+      "unit": "шт"
+    }, {
+      "name": "видосики",
+      "color": "rgb(255, 255, 255)",
+      "amount": 1,
+      "unit": "шт"
+    }, {
+      "name": "кисло-сладкий соус",
+      "color": "rgb(201, 230, 123)",
+      "amount": 50,
+      "unit": "г"
+    }],
+    "steps": [{
+      "text": "The first line of Lorem Ipsum",
+      "photo": "",
+      "animation": "",
+    }, {
+      "text": "undoubtable source. Lorem Ipsum comes from sections",
+      "photo": "",
+      "animation": "",
+    }, {
+      "text": "variations of passages of Lorem Ipsum available, but the majority have suffered",
+      "photo": "",
+      "animation": "",
+    }, {
+      "text": "undoubtable source. Lorem Ipsum comes from sections",
+      "photo": "",
+      "animation": "",
+    }]
+  }, {
+    "name": "Название блюда 3",
+    "shortDescription": "ker including versions of Lorem Ipsum.",
+    "ingredients": [{
+      "name": "бургер",
+      "color": "rgb(92, 197, 230)",
+      "amount": 2,
+      "unit": "шт"
+    }],
+    "steps": []
+  }]
 }
