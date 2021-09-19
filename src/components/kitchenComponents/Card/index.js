@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-const MenuDishes = (title, description, ingredients) => {
+const MenuDishes = () => {
 
     const [dishes, setDishes] = useState([])
 
@@ -16,28 +16,36 @@ const MenuDishes = (title, description, ingredients) => {
 
     const createDishes= async () => {
        const response =  await axios.post(`http://localhost:3004/dishes`, {
-            title: 'dish',
-            ingredients: [
+            name: 'dish',
+            products: [
                 {
-                    body: "some ingredient"
+                    ingredient: "some ingredient"
                 
                 }
             ]
         })
 
+        console.log('dishes')
+        console.log(response.data)
+
         setDishes([...dishes, response.data])
     }
+    
+    
+
     return (
         <div className="dish"> 
-            <h3 className ="dish__title">{title}</h3>
-            <p className="dish__description">{description}</p>
+            {dishes.map(dish => <div className = "dish">
+            <h3 className ="dish__title">{dish.name}</h3>
+            <p className="dish__description">{dish.description}</p>
             <ul className="dish__ingredients">
-                {ingredients.map(({name}) => {
+                {dish.products.map(({ingredient}) => {
                     return(
-                        <li className="dish__ingredients__element">{name}</li>
+                        <li className="dish__ingredients__element">{ingredient}</li>
                     )
                 })}
             </ul>
+            </div>)}
             <button className="dish__button" onClick={createDishes}> + </button>
         </div>
     )
