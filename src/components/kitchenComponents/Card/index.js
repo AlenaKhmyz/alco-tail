@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import ConstructorPage from '../../../pages/kitchenPages/Constructor'
+import { Link } from 'react-router-dom';
+import {ROUTES} from '../../../const'
 
 const MenuDishes = () => {
 
@@ -14,22 +17,22 @@ const MenuDishes = () => {
         getDishes()
     }, [])
 
-    const createDishes= async () => {
-       const response =  await axios.post(`http://localhost:3004/dishes`, {
-            name: 'dish',
-            products: [
-                {
-                    ingredient: "some ingredient"
+    // const createDishes= async () => {
+    //    const response =  await axios.post(`http://localhost:3004/dishes`, {
+    //         name: 'dish',
+    //         products: [
+    //             {
+    //                 ingredient: "some ingredient"
                 
-                }
-            ]
-        })
+    //             }
+    //         ]
+    //     })
 
-        console.log('dishes')
-        console.log(response.data)
+    //     console.log('dishes')
+    //     console.log(response.data)
 
-        setDishes([...dishes, response.data])
-    }
+    //     setDishes([...dishes, response.data])
+    // }
     
     
 
@@ -46,7 +49,7 @@ const MenuDishes = () => {
                 })}
             </ul>
             </div>)}
-            <button className="dish__button" onClick={createDishes}> + </button>
+            <Link to = {ROUTES.CONSTRUCTOR}>ADD</Link> 
         </div>
     )
 }

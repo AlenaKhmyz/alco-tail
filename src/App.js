@@ -7,6 +7,7 @@ import { ROUTES } from './const'
 import BarPage from './pages/barPages/Bar'
 import KitchenPage from './pages/kitchenPages/Kitchen'
 import HomePage from './pages/Home'
+import ConstructorPage from './pages/kitchenPages/Constructor'
 
 
 function App() {
@@ -14,12 +15,19 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          
           <Route path={ROUTES.BAR}>
             <BarPage />
           </Route>
+          
           <Route path={ROUTES.KITCHEN}>
             <KitchenPage />
           </Route>
+          
+          <Route path={ROUTES.CONSTRUCTOR}>
+            <ConstructorPage />
+          </Route>
+         
           <Route path={ROUTES.HOME} component={HomePage} />
         </Switch>
       </BrowserRouter>
