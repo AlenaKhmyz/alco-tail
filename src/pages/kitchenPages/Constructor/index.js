@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
+import '../../../scss/components/_constructor.scss'
+
 function ConstructorPage() {
    const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
 
@@ -32,6 +34,26 @@ function ConstructorPage() {
         setList(!list)
     }
     
+//     const sendFiles = (files) => {
+//         let maxFileSize = 5242880;
+//         let Data = new FormData();
+//         $(files).each(function(index, file) {
+//              if ((file.size <= maxFileSize) && ((file.type == 'image/png') || (file.type == 'image/jpeg'))) {
+//                   Data.append('images[]', file);
+//              }
+//         });
+        // $.ajax({
+        //     url: dropZone.attr('action'),
+        //     type: dropZone.attr('method'),
+        //     data: Data,
+        //     contentType: false,
+        //     processData: false,
+        //     success: function(data) {
+        //         alert('Файлы были успешно загружены');
+        //     }
+        // });
+//    };
+
     // const createDishes= async () => {
     //    const response =  await axios.post(`http://localhost:3004/dishes`, {
     //         name: 'dish',
