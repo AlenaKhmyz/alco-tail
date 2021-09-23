@@ -4,13 +4,15 @@ import axios from 'axios'
 import '../../../scss/components/_constructor.scss'
 
 function ConstructorPage() {
-    const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
+   const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
 
     const [name, setName] = useState('')
     const[showDropDown, setShowDropDown] = useState(false)
     const [list, setList] = useState(false)
     const [finalCount, setFinalCount] = useState(0)
     const [count, setCount] = useState(0)
+
+
 
     const onShowDropDown = () => {
         setShowDropDown(!showDropDown)
@@ -34,53 +36,37 @@ function ConstructorPage() {
     const onShowItem = () => {
         setList(!list)
     }
+
+    const onChange = () => {
+
+    }
     
-//     const sendFiles = (files) => {
-//         let maxFileSize = 5242880;
-//         let Data = new FormData();
-//         $(files).each(function(index, file) {
-//              if ((file.size <= maxFileSize) && ((file.type == 'image/png') || (file.type == 'image/jpeg'))) {
-//                   Data.append('images[]', file);
-//              }
-//         });
-        // $.ajax({
-        //     url: dropZone.attr('action'),
-        //     type: dropZone.attr('method'),
-        //     data: Data,
-        //     contentType: false,
-        //     processData: false,
-        //     success: function(data) {
-        //         alert('Файлы были успешно загружены');
-        //     }
-        // });
-//    };
+    const createName = async() => {
 
-    // const createDishes= async () => {
-    //    const response =  await axios.post(`http://localhost:3004/dishes`, {
-    //         name: 'dish',
-    //         products: [
-    //             {
-    //                 ingredient: "some ingredient"
+    }
+
+    const createDishes= async () => {
+       const response =  await axios.post(`http://localhost:3004/dishes`, {
+            name,
+            products: [
+                {
+                    ingredient: "some ingredient"
                 
-    //             }
-    //         ]
-    //     })
+                }
+            ]
+        })
 
-    //     console.log('dishes')
-    //     console.log(response.data)
+        console.log('dishes')
+        console.log(response.data)
 
-    //     setDishes([...dishes, response.data])
-    // }
+    }
     
     return (
         <div className="consructor">
-             <div className="constructor__container">
+            <div className="constructor__container">
                 <h3 className="constructor__container__title">Dish name</h3>
-                <div classNmae="constructor__container__name">
-                    <input className="constructor__container__name__text" value={name} onChange={(event) => {setName()}} placeholder="*Enter the name of the dish"></input>
-                    <button className="constructor__container__name__btn">Add</button>
-                </div>
-                <button className="constructor__container__name" onClick={onShowDropDown}> + </button>
+                <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
+                <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
                 {showDropDown && <div>
                     { 
                         list ? (
@@ -102,9 +88,6 @@ function ConstructorPage() {
                         <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
                     </span>
                 </div>}
-                
-               
-
                 <form className="constructor__container__upload-container">
                 <img className="constructor__container__upload-image" src="upload.svg"></img>
                     <div>
@@ -115,7 +98,7 @@ function ConstructorPage() {
                 </form>
                 <textarea className="constructor__container__comments" placeholder="*Leave a comment"></textarea>
             </div>
-            <button className="constructor__button">Save</button>
+            <button className="constructor__button" onClick={createDishes}>Save</button>
         </div> 
     )
 }
