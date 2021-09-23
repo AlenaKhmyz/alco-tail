@@ -4,9 +4,10 @@ import axios from 'axios'
 import '../../../scss/components/_constructor.scss'
 
 function ConstructorPage() {
-   const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
+    const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
 
-   const[showDropDown, setShowDropDown] = useState(false)
+    const [name, setName] = useState('')
+    const[showDropDown, setShowDropDown] = useState(false)
     const [list, setList] = useState(false)
     const [finalCount, setFinalCount] = useState(0)
     const [count, setCount] = useState(0)
@@ -73,9 +74,12 @@ function ConstructorPage() {
     
     return (
         <div className="consructor">
-            <div className="constructor__container">
+             <div className="constructor__container">
                 <h3 className="constructor__container__title">Dish name</h3>
-                <input className="constructor__container__name" placeholder="*Enter the name of the dish"></input>
+                <div classNmae="constructor__container__name">
+                    <input className="constructor__container__name__text" value={name} onChange={(event) => {setName()}} placeholder="*Enter the name of the dish"></input>
+                    <button className="constructor__container__name__btn">Add</button>
+                </div>
                 <button className="constructor__container__name" onClick={onShowDropDown}> + </button>
                 {showDropDown && <div>
                     { 
@@ -94,14 +98,14 @@ function ConstructorPage() {
                     }
                      <span className="constructor__container__count">
                         <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
-                        <span className="constructor__container__count__state">{count}</span>
+                        <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
                         <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
                     </span>
                 </div>}
                 
                
 
-                <form className="constructor__container__upload-container" method="POST" action="send">
+                <form className="constructor__container__upload-container">
                 <img className="constructor__container__upload-image" src="upload.svg"></img>
                     <div>
                         <input className="constructor__container__file-input" type="file" name="file" multiple></input>
