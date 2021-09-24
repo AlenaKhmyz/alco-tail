@@ -75,21 +75,16 @@ function ConstructorPage() {
                 <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
                 <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
                 {showDropDown && <div>
-                    { 
-                        list ? (
-                            <div> 
-                            <button onClick = {onShowItem}>Close ▲</button>
+                    {<div> 
+                            <input onClick = {onShowItem}/>
+                            {list && <div>
                                 <ul>
                                     {ingredients.map( item => <li><span>{item}</span></li>)}
                                 </ul>
                                 <div>{finalCount}</div>
-                            </div>
-                           )
-                           :
-                           <button onClick = {onShowItem} style = {{width: '300px'}}>Ingredients ▼</button>
-                           
-                    }
-                     <span className="constructor__container__count">
+                            </div>}        
+                    </div>}
+                    <span className="constructor__container__count">
                         <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
                         <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
                         <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
