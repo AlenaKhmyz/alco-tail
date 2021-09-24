@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios'
 
 import '../../../scss/components/_constructor.scss'
@@ -7,8 +7,7 @@ function ConstructorPage() {
 
     const [ingredients, setIngredients] = useState([])
     const [name, setName] = useState('')
-    const[showDropDown, setShowDropDown] = useState(false)
-    const [finalCount, setFinalCount] = useState(0)
+    const [showDropDown, setShowDropDown] = useState(false)
     const [count, setCount] = useState(0)
     const [word, setWord] = useState('')
 
@@ -41,13 +40,14 @@ function ConstructorPage() {
 
     }
 
-    const result = ingredients.filter(function(item) {
-      
-        return item[0] === word
-    });
-
-    console.log(result)
-    //setIngredients(result) 
+    const result = useMemo(() => ingredients.filter(function(item) {
+        console.log(item.indexOf(word))
+        if (item.indexOf(word) === -1) {
+            return false
+        } else {
+            return true
+        } 
+    }),[word, ingredients])
 
     const createDishes= async () => {
        const response =  await axios.post(`http://localhost:3004/dishes`, {
