@@ -4,12 +4,13 @@ import axios from 'axios'
 import '../../../scss/components/_constructor.scss'
 
 function ConstructorPage() {
+
     const [ingredients, setIngredients] = useState([])
     const [name, setName] = useState('')
     const[showDropDown, setShowDropDown] = useState(false)
-    const [list, setList] = useState(false)
     const [finalCount, setFinalCount] = useState(0)
     const [count, setCount] = useState(0)
+    const [word, setWord] = useState('')
 
 
     const getIngredients = async () => {
@@ -40,17 +41,13 @@ function ConstructorPage() {
 
     }
 
-    const onShowItem = () => {
-        setList(!list)
-    }
+    const result = ingredients.filter(function(item) {
+      
+        return item[0] === word
+    });
 
-    const onChange = () => {
-
-    }
-    
-    const createName = async() => {
-
-    }
+    console.log(result)
+    //setIngredients(result) 
 
     const createDishes= async () => {
        const response =  await axios.post(`http://localhost:3004/dishes`, {
@@ -76,13 +73,11 @@ function ConstructorPage() {
                 <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
                 {showDropDown && <div>
                     {<div> 
-                            <input onClick = {onShowItem}/>
-                            {list && <div>
+                            <input  onChange={(event) => {setWord(event.target.value)}}/>
                                 <ul>
-                                    {ingredients.map( item => <li><span>{item}</span></li>)}
+                                    {result.map( item => <li><span>{item}</span></li>)}
                                 </ul>
-                                <div>{finalCount}</div>
-                            </div>}        
+                                  
                     </div>}
                     <span className="constructor__container__count">
                         <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
