@@ -4,8 +4,7 @@ import axios from 'axios'
 import '../../../scss/components/_constructor.scss'
 
 function ConstructorPage() {
-   const ingredients = ['pepperoni','pineapple', 'cheese', 'mushrooms']
-
+    const [ingredients, setIngredients] = useState([])
     const [name, setName] = useState('')
     const[showDropDown, setShowDropDown] = useState(false)
     const [list, setList] = useState(false)
@@ -13,6 +12,14 @@ function ConstructorPage() {
     const [count, setCount] = useState(0)
 
 
+    const getIngredients = async () => {
+        const response = await axios.get('http://localhost:3004/ingredients')
+        setIngredients(response.data)
+    }
+
+    useEffect (() => {
+        getIngredients()
+    }, [])
 
     const onShowDropDown = () => {
         setShowDropDown(!showDropDown)

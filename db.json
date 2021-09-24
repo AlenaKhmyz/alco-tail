@@ -1,4 +1,8 @@
 {
+  "ingredients" : [
+    "potato", "pepperoni", "chicken", "limon"
+  ],
+  
   "cocktails": [
     {
       "id": 1,
