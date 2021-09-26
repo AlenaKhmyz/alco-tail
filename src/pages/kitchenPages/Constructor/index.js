@@ -6,6 +6,7 @@ import '../../../scss/components/_constructor.scss'
 function ConstructorPage() {
 
     const [ingredients, setIngredients] = useState([])
+    const [selectedIngredients, setSelectedIngredients] = useState([])
     const [name, setName] = useState('')
     const [showDropDown, setShowDropDown] = useState(false)
     const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function ConstructorPage() {
     const getIngredients = async () => {
         const response = await axios.get('http://localhost:3004/ingredients')
         setIngredients(response.data)
+
     }
 
     useEffect (() => {
@@ -40,9 +42,8 @@ function ConstructorPage() {
 
     }
 
-    const result = useMemo(() => ingredients.filter(function(item) {
-        console.log(item.indexOf(word))
-        if (item.indexOf(word) === -1) {
+    const ingredientSuggestions = useMemo(() => ingredients.filter(function(item) {
+        if (item.name.indexOf(word) === -1) {
             return false
         } else {
             return true
@@ -64,6 +65,22 @@ function ConstructorPage() {
         console.log(response.data)
 
     }
+
+    const createIngredient = async () => {
+        const result = await axios.post(`http://localhost:3004/ingredients`, {
+            name: word
+        })
+
+        getIngredients()
+    }
+
+    const addIngredients = () => {
+        const newIngredients = [...selectedIngredients, word]
+        setSelectedIngredients(newIngredients)
+        createIngredient()
+    }
+    
+    console.log(selectedIngredients)
     
     return (
         <div className="consructor">
@@ -73,10 +90,14 @@ function ConstructorPage() {
                 <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
                 {showDropDown && <div>
                     {<div> 
+                            <ul>
+                            {selectedIngredients.map( element=> <li><span>{element}</span></li>)}
+                            </ul>
                             <input  onChange={(event) => {setWord(event.target.value)}}/>
                                 <ul>
-                                    {result.map( item => <li><span>{item}</span></li>)}
+                                    {ingredientSuggestions.map( item => <li key={item.id}><span>{item.name}</span></li>)}
                                 </ul>
+                            <button onClick={addIngredients}>Add</button>
                                   
                     </div>}
                     <span className="constructor__container__count">
