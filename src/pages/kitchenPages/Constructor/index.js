@@ -79,15 +79,7 @@ function ConstructorPage() {
         setSelectedIngredients(newIngredients)
         createIngredient()
     }
-    
-    const chooseIngredient = () => {
-        const addedIngredients = [...selectedIngredients,ingredientSuggestions[6].name]
-        setSelectedIngredients(addedIngredients)
-        createIngredient()
-  
-        console.log(addedIngredients)
-    }
-    console.log(selectedIngredients)
+
     
     return (
         <div className="consructor">
@@ -102,7 +94,13 @@ function ConstructorPage() {
                             </ul>
                             <input  onChange={(event) => {setWord(event.target.value)}}/>
                                 <ul>
-                                    {ingredientSuggestions.map( item => <li key={item.id}><button onClick={chooseIngredient}>{item.name}</button></li>)}
+                                    {ingredientSuggestions.map( (item, i) => <li key={item.id}><button onClick={ () => {
+                                        const addedIngredients = [...selectedIngredients, ingredients[i].name]
+                                        setSelectedIngredients(addedIngredients)
+                                        createIngredient()
+                                  
+                                        console.log(addedIngredients)
+                                    }}>{item.name}</button></li>)}
                                 </ul>
                             <button onClick={addIngredients}>Add</button>
                                   
