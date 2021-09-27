@@ -95,7 +95,7 @@ function ConstructorPage() {
                             </ul>
                             <input  onChange={(event) => {setWord(event.target.value)}}/>
                                 <ul>
-                                    {ingredientSuggestions.map( item => <li key={item.id}><span>{item.name}</span></li>)}
+                                    {ingredientSuggestions.map( item => <li key={item.id}><button onClick={}>{item.name}</span></li>)}
                                 </ul>
                             <button onClick={addIngredients}>Add</button>
                                   
