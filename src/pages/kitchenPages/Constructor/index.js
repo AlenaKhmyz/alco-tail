@@ -7,16 +7,28 @@ function ConstructorPage() {
 
   const [ingredients, setIngredients] = useState([])
   const [selectedIngredients, setSelectedIngredients] = useState([])
+  const [units, setUnits] = useState([])
   const [name, setName] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
+  
 
+// 1.сделать пост запрос для комментария
+// 2.сдеалть выбор единиц измерений 
+// 3.заливка гифки
 
+  
+  const getUnits = async () => {
+    const result = await axios.get('http://localhost:3004/units')
+    setUnits(result.data)
+  }
   const getIngredients = async () => {
     const response = await axios.get('http://localhost:3004/ingredients')
     setIngredients(response.data)
+    getUnits()
   }
+
 
   useEffect (() => {
     getIngredients()
@@ -90,9 +102,21 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
-              {selectedIngredients.map( element=> <li><span>{element}</span></li>)}
+              {selectedIngredients.map( element=> <li><span>{element}</span>
+                <span className="constructor__container__count">
+            <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
+            <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
+            <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
+            <input onChange={(event) => {setUnits(event.target.value)}}/>
+          </span></li>)}
             </ul>
-            <input  onChange={(event) => {setWord(event.target.value)}}/>
+            <input   onChange={(event) => {setWord(event.target.value)}}/>
+            <ul>
+              {
+                units.map((item) => <li key={item.id}>{item.unit}</li>)
+              }
+            </ul>
+            
             <ul>
               {ingredientSuggestions.map( (item, i) => <li key={item.id}><button onClick={ () => {
                 const addedIngredients = [...selectedIngredients, ingredients[i].name]
@@ -102,11 +126,7 @@ function ConstructorPage() {
             </ul>
             <button onClick={addIngredients}>Add</button>        
           </div>}
-          <span className="constructor__container__count">
-            <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
-            <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
-            <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
-          </span>
+          
         </div>}
         <form className="constructor__container__upload-container">
           <img className="constructor__container__upload-image" src="upload.svg"></img>
