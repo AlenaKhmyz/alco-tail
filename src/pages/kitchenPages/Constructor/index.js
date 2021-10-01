@@ -12,11 +12,6 @@ function ConstructorPage() {
   const [showDropDown, setShowDropDown] = useState(false)
   const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
-  
-
-// 1.сделать пост запрос для комментария
-// 2.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
-// 3.заливка гифки
 
   
   const getIngredients = async () => {
