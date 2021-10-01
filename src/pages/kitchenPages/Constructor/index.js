@@ -12,6 +12,11 @@ function ConstructorPage() {
   const [showDropDown, setShowDropDown] = useState(false)
   const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
+  
+
+// 1.сделать пост запрос для комментария
+// 2.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
+// 3.заливка гифки
 
   
   const getIngredients = async () => {
@@ -85,6 +90,7 @@ function ConstructorPage() {
       <div className="constructor__container">
         <h3 className="constructor__container__title">Dish name</h3>
         <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
+        <textarea className="constructor__container__short-description" placeholder="*Short description"></textarea>
         <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
         {showDropDown && <div>
           {<div> 
@@ -126,7 +132,7 @@ function ConstructorPage() {
               <span>или перетащите его сюда</span>
             </div>
         </form>
-        <textarea className="constructor__container__comments" placeholder="*Leave a comment"></textarea>
+        <textarea className="constructor__container__description" placeholder="*Description"></textarea>
       </div>
       <button className="constructor__button" onClick={createDishes}>Save</button>
     </div> 
