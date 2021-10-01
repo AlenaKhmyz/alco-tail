@@ -7,7 +7,7 @@ function ConstructorPage() {
 
   const [ingredients, setIngredients] = useState([])
   const [selectedIngredients, setSelectedIngredients] = useState([])
-  const [units, setUnits] = useState([])
+  const [units, setUnits] = useState('')
   const [name, setName] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [count, setCount] = useState(0)
@@ -15,18 +15,13 @@ function ConstructorPage() {
   
 
 // 1.сделать пост запрос для комментария
-// 2.сдеалть выбор единиц измерений 
+// 2.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
 // 3.заливка гифки
 
   
-  const getUnits = async () => {
-    const result = await axios.get('http://localhost:3004/units')
-    setUnits(result.data)
-  }
   const getIngredients = async () => {
     const response = await axios.get('http://localhost:3004/ingredients')
     setIngredients(response.data)
-    getUnits()
   }
 
 
@@ -89,9 +84,6 @@ function ConstructorPage() {
     setSelectedIngredients(newIngredients)
     createIngredient()
   }
-
-
-
     
   return (
     <div className="consructor">
@@ -104,18 +96,21 @@ function ConstructorPage() {
             <ul>
               {selectedIngredients.map( element=> <li><span>{element}</span>
                 <span className="constructor__container__count">
-            <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
-            <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
-            <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
-            <input onChange={(event) => {setUnits(event.target.value)}}/>
-          </span></li>)}
+                  <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
+                  <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
+                  <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
+                  <select onChange={(event) => {setUnits(event.target.value)}} className="form-control" value={units}>
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="ml">ml</option>
+                    <option value="l">l</option>
+                    <option value="pcs">pcs</option>
+                  </select>
+                </span></li>
+              )}
             </ul>
             <input   onChange={(event) => {setWord(event.target.value)}}/>
-            <ul>
-              {
-                units.map((item) => <li key={item.id}>{item.unit}</li>)
-              }
-            </ul>
+           
             
             <ul>
               {ingredientSuggestions.map( (item, i) => <li key={item.id}><button onClick={ () => {
