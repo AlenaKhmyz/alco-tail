@@ -40,7 +40,8 @@ const MenuDishes = () => {
         <div className="dish"> 
             {dishes.map(dish => <div className = "dish">
             <h3 className ="dish__title">{dish.name}</h3>
-            <p className="dish__description">{dish.description}</p>
+            <p className="dish__short-description">{dish.shortDescription}</p>
+            <p className="dish__descripton">{dish.description}</p>
             <ul className="dish__ingredients">
                 {dish.products.map(({ingredient}) => {
                     return(

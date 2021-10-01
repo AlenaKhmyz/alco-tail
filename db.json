@@ -174,59 +174,6 @@
           "animation": ""
         }
       ]
-    },
-    {
-      "name": "dish",
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 3
-    },
-    {
-      "name": "dish",
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 4
-    },
-    {
-      "name": "",
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 5
-    },
-    {
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 6
-    },
-    {
-      "name": "hgjhbb",
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 7
-    },
-    {
-      "name": "",
-      "products": [
-        {
-          "ingredient": "some ingredient"
-        }
-      ],
-      "id": 8
     }
   ]
 }

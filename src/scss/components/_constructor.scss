@@ -7,13 +7,17 @@
     min-height: 100vh;
 
     &__container {
+        &__name {
+            
+        }
+
         &__upload-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             outline: 2px dashed #5d5d5d;
             outline-offset: -12px;
             background-color: #e0f2f7;

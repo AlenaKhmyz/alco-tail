@@ -15,10 +15,8 @@ function ConstructorPage() {
   const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
   
-
-// 1.сделать пост запрос для комментария
-// 2.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
-// 3.заливка гифки
+// 1.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
+// 2.заливка гифки
 
   
   const getIngredients = async () => {
@@ -58,9 +56,11 @@ function ConstructorPage() {
   const createDishes= async () => {
     const response =  await axios.post(`http://localhost:3004/dishes`, {
       name,
+      shortDescription,
+      description,
       products: [
         {
-          ingredient: "some ingredient"
+          ingredients
         
         }
       ]
@@ -92,10 +92,8 @@ function ConstructorPage() {
       <div className="constructor__container">
         <h3 className="constructor__container__title">Dish name</h3>
         <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
-        <div>
-          <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
-          <buttton>Save</buttton>
-        </div>
+        <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
+        <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
         {showDropDown && <div>
           {<div> 
             <ul>
@@ -136,10 +134,7 @@ function ConstructorPage() {
               <span>или перетащите его сюда</span>
             </div>
         </form>
-        <div>
-          <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
-          <buttton>Save</buttton>
-        </div>
+        <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
       </div>
       <button className="constructor__button" onClick={createDishes}>Save</button>
     </div> 
