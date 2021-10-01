@@ -7,8 +7,10 @@ function ConstructorPage() {
 
   const [ingredients, setIngredients] = useState([])
   const [selectedIngredients, setSelectedIngredients] = useState([])
-  const [units, setUnits] = useState('')
   const [name, setName] = useState('')
+  const [units, setUnits] = useState('')
+  const [description, setDescription] = useState('')
+  const [shortDescription, setShortDescription] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
@@ -67,7 +69,7 @@ function ConstructorPage() {
   }
 
   const createIngredient = async () => {
-    if(word == '') {
+    if(word === '') {
       return 
     } else {
       const result = await axios.post(`http://localhost:3004/ingredients`, {
@@ -90,7 +92,7 @@ function ConstructorPage() {
       <div className="constructor__container">
         <h3 className="constructor__container__title">Dish name</h3>
         <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
-        <textarea className="constructor__container__short-description" placeholder="*Short description"></textarea>
+        <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
         <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
         {showDropDown && <div>
           {<div> 
@@ -132,7 +134,7 @@ function ConstructorPage() {
               <span>или перетащите его сюда</span>
             </div>
         </form>
-        <textarea className="constructor__container__description" placeholder="*Description"></textarea>
+        <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
       </div>
       <button className="constructor__button" onClick={createDishes}>Save</button>
     </div> 
