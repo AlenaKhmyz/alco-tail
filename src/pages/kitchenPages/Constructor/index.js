@@ -92,8 +92,10 @@ function ConstructorPage() {
       <div className="constructor__container">
         <h3 className="constructor__container__title">Dish name</h3>
         <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
-        <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
-        <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
+        <div>
+          <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
+          <buttton>Save</buttton>
+        </div>
         {showDropDown && <div>
           {<div> 
             <ul>
@@ -134,7 +136,10 @@ function ConstructorPage() {
               <span>или перетащите его сюда</span>
             </div>
         </form>
-        <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
+        <div>
+          <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
+          <buttton>Save</buttton>
+        </div>
       </div>
       <button className="constructor__button" onClick={createDishes}>Save</button>
     </div> 
