@@ -2,17 +2,19 @@ import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios'
 
 import '../../../scss/components/_constructor.scss'
+import IngredientForm from '../../../components/ingredientForm'
 
 function ConstructorPage() {
 
   const [ingredients, setIngredients] = useState([])
-  const [selectedIngredients, setSelectedIngredients] = useState([])
+  const [selectedIngredients, setSelectedIngredients] = useState({})
   const [name, setName] = useState('')
-  const [units, setUnits] = useState('')
+  const [ingredientsCount, setIngredientCount] = useState ({
+    ingredientsCount: 0
+  })
   const [description, setDescription] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
-  const [count, setCount] = useState(0)
   const [word, setWord] = useState('')
   
 // 1.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
@@ -33,17 +35,6 @@ function ConstructorPage() {
     setShowDropDown(!showDropDown)
   }
 
-  const onAddCount = () => {
-    setCount(count + 1)   
-  }
-
-  const onDeleteCount = () => {
-    if(count > 0) {
-      setCount(count - 1) 
-    } else {
-      setCount(0)
-    }
-  }
 
   const ingredientSuggestions = useMemo(() => ingredients.filter(function(item) {
     if (item.name.indexOf(word) === -1) {
@@ -65,27 +56,32 @@ function ConstructorPage() {
         }
       ]
     })
-
   }
 
   const createIngredient = async () => {
-    if(word === '') {
-      return 
-    } else {
-      const result = await axios.post(`http://localhost:3004/ingredients`, {
-        name: word
-      })
-      getIngredients()
+    await axios.post(`http://localhost:3004/ingredients`, {
+      name: word
+    })
+    getIngredients()
+  }
+
+  const addIngredient = (name, needToCreateIngredient) => {
+    if (!name) {
+      return;
     }
-
-    
-  }
-
-  const addIngredients = () => {
-    const newIngredients = [...selectedIngredients, word]
+    const newIngredients = {...selectedIngredients}
+    newIngredients[name] = {
+      name: name,
+      unit: "kg",
+      amount: 0
+    };
     setSelectedIngredients(newIngredients)
-    createIngredient()
+    if (needToCreateIngredient) {
+      createIngredient()
+    }
   }
+
+  console.log(selectedIngredients);
     
   return (
     <div className="consructor">
@@ -97,32 +93,18 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
-              {selectedIngredients.map( element=> <li><span>{element}</span>
-                <span className="constructor__container__count">
-                  <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
-                  <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
-                  <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
-                  <select onChange={(event) => {setUnits(event.target.value)}} className="form-control" value={units}>
-                    <option value="g">g</option>
-                    <option value="kg">kg</option>
-                    <option value="ml">ml</option>
-                    <option value="l">l</option>
-                    <option value="pcs">pcs</option>
-                  </select>
-                </span></li>
+              { Object.values(selectedIngredients).map( element => <IngredientForm element={element.name} />
               )}
             </ul>
-            <input   onChange={(event) => {setWord(event.target.value)}}/>
+            <input onChange={(event) => {setWord(event.target.value)}}/>
            
             
             <ul>
-              {ingredientSuggestions.map( (item, i) => <li key={item.id}><button onClick={ () => {
-                const addedIngredients = [...selectedIngredients, ingredients[i].name]
-                setSelectedIngredients(addedIngredients)
-                createIngredient()
-              }}>{item.name}</button></li>)}
+              {ingredientSuggestions.map( (item, i) => (
+                <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
+              ))}
             </ul>
-            <button onClick={addIngredients}>Add</button>        
+            <button onClick={() => addIngredient(word, true)}>Add</button>        
           </div>}
           
         </div>}
