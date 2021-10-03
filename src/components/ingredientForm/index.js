@@ -25,7 +25,7 @@ const IngredientForm = ({element, updateSelectedIngredient}) => {
   }
 
   const changeAmount = (event) => {
-    if(!/[0-9]/.test(event.target.value)) {
+    if(!/^[0-9]+$/.test(event.target.value)) {
       return
     }
     updateSelectedIngredient({
