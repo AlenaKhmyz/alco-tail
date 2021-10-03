@@ -1,29 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-const IngredientForm = ({element}) => {
-  const [units, setUnits] = useState('')
-  const [count, setCount] = useState(0)
+const IngredientForm = ({element, updateSelectedIngredient}) => {
+  
 
   const onAddCount = () => {
-    setCount(count + 1)   
+    updateSelectedIngredient({
+      name: element.name, 
+      amount: element.amount + 1,
+      unit: element.unit
+    }) 
+    
+    
   }
 
-  const onDeleteCount = () => {
-    if(count > 0) {
-      setCount(count - 1) 
-    } else {
-      setCount(0)
+  const onSubtractCount = () => {
+    if(element.amount > 0) {
+      updateSelectedIngredient({
+        name: element.name, 
+        amount: element.amount - 1,
+        unit: element.unit
+      }) 
+    } 
+  }
+
+  const changeAmount = (event) => {
+    if(!/[0-9]/.test(event.target.value)) {
+      return
     }
+    updateSelectedIngredient({
+      name: element.name, 
+      amount: Number(event.target.value),
+      unit: element.unit
+    }) 
+  }
+
+  const changeUnit = (event) => {
+    updateSelectedIngredient({
+      name: element.name, 
+      amount: element.amount,
+      unit: event.target.value
+    }) 
   }
 
   return(
-    <li><span>{element}</span>
+    <li><span>{element.name}</span>
       <span className="constructor__container__count">
-        <button className="constructor__container__count__delete" onClick={onDeleteCount}>-</button>
-        <input className="constructor__container__count__state"  value={count} type="text" onChange={ (event) => {setCount(Number(event.target.value))}}/>
+        <button className="constructor__container__count__delete" onClick={onSubtractCount}>-</button>
+        <input className="constructor__container__count__state"  value={element.amount} type="text" onChange={changeAmount}/>
         <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
-        <select onChange={(event) => {setUnits(event.target.value)}} className="form-control" value={units}>
+        <select className="form-control" value={element.unit} onChange={changeUnit}>
           <option value="g">g</option>
           <option value="kg">kg</option>
           <option value="ml">ml</option>

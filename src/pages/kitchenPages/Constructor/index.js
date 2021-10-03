@@ -49,12 +49,7 @@ function ConstructorPage() {
       name,
       shortDescription,
       description,
-      products: [
-        {
-          ingredients
-        
-        }
-      ]
+      ingredients: selectedIngredients
     })
   }
 
@@ -81,6 +76,13 @@ function ConstructorPage() {
     }
   }
 
+  const updateSelectedIngredient = (ingredient) => {
+    console.log(ingredient)
+    const updatedIngredients =  {...selectedIngredients}
+    updatedIngredients[ingredient.name] = ingredient
+    setSelectedIngredients( updatedIngredients)
+  }
+
   console.log(selectedIngredients);
     
   return (
@@ -93,7 +95,7 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
-              { Object.values(selectedIngredients).map( element => <IngredientForm element={element.name} />
+              { Object.values(selectedIngredients).map( element => <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} />
               )}
             </ul>
             <input onChange={(event) => {setWord(event.target.value)}}/>
