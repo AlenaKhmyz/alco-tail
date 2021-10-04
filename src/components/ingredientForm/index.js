@@ -33,6 +33,7 @@ const IngredientForm = ({element, updateSelectedIngredient}) => {
       amount: Number(event.target.value),
       unit: element.unit
     }) 
+    
   }
 
   const changeUnit = (event) => {

@@ -12,12 +12,13 @@ function ConstructorPage() {
   const [ingredientsCount, setIngredientCount] = useState ({
     ingredientsCount: 0
   })
+  const [listSteps, setListSteps] = ([])
   const [description, setDescription] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
+  const [step, setStep] = useState('')
   
-// 1.пофиксить количиство ингредиентов и единицы измерения, чтобы для каждого ингредиенты были разные
 // 2.заливка гифки
 
   
@@ -49,7 +50,8 @@ function ConstructorPage() {
       name,
       shortDescription,
       description,
-      ingredients: selectedIngredients
+      ingredients: selectedIngredients,
+      listSteps
     })
   }
 
@@ -83,8 +85,15 @@ function ConstructorPage() {
     setSelectedIngredients( updatedIngredients)
   }
 
-  console.log(selectedIngredients);
+  const onAddSteps = () => {
+    const newListSteps = [...listSteps, step]
+    newListSteps = {
+      step
+    }
+    setListSteps(newListSteps)
+  }
     
+  console.log(listSteps)
   return (
     <div className="consructor">
       <div className="constructor__container">
@@ -99,8 +108,6 @@ function ConstructorPage() {
               )}
             </ul>
             <input onChange={(event) => {setWord(event.target.value)}}/>
-           
-            
             <ul>
               {ingredientSuggestions.map( (item, i) => (
                 <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
@@ -108,8 +115,15 @@ function ConstructorPage() {
             </ul>
             <button onClick={() => addIngredient(word, true)}>Add</button>        
           </div>}
-          
         </div>}
+       <div> 
+          <ul>
+            
+            <li></li>
+          </ul>
+          <textarea value={step} onChange={(event) => {setStep(event.target.value)}} placeholder="*Steps"/>  
+          <button onClick={onAddSteps}>Add steps</button>
+        </div>
         <form className="constructor__container__upload-container">
           <img className="constructor__container__upload-image" src="upload.svg"></img>
             <div>
