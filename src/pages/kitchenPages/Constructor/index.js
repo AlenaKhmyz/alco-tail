@@ -12,12 +12,12 @@ function ConstructorPage() {
   const [ingredientsCount, setIngredientCount] = useState ({
     ingredientsCount: 0
   })
-  const [listSteps, setListSteps] = ([])
+  const [stepList, setStepList] = useState([])
+  const [text, setText] = useState('')
   const [description, setDescription] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
-  const [step, setStep] = useState('')
   
 // 2.заливка гифки
 
@@ -51,7 +51,7 @@ function ConstructorPage() {
       shortDescription,
       description,
       ingredients: selectedIngredients,
-      listSteps
+      steps: stepList
     })
   }
 
@@ -78,22 +78,23 @@ function ConstructorPage() {
     }
   }
 
+  const addStep = (text ) => {
+    const step = {
+      text
+    }
+    const newStep = [...stepList, step]
+    setStepList(newStep)
+    setText('')
+  } 
+
   const updateSelectedIngredient = (ingredient) => {
-    console.log(ingredient)
     const updatedIngredients =  {...selectedIngredients}
     updatedIngredients[ingredient.name] = ingredient
     setSelectedIngredients( updatedIngredients)
   }
 
-  const onAddSteps = () => {
-    const newListSteps = [...listSteps, step]
-    newListSteps = {
-      step
-    }
-    setListSteps(newListSteps)
-  }
-    
-  console.log(listSteps)
+  
+  
   return (
     <div className="consructor">
       <div className="constructor__container">
@@ -118,11 +119,12 @@ function ConstructorPage() {
         </div>}
        <div> 
           <ul>
-            
-            <li></li>
+            {stepList.map( (item) => (
+              <li key={item.text}>{item.text}</li>
+            ))}      
           </ul>
-          <textarea value={step} onChange={(event) => {setStep(event.target.value)}} placeholder="*Steps"/>  
-          <button onClick={onAddSteps}>Add steps</button>
+          <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
+          <button onClick={() => addStep(text)}>Add steps</button>
         </div>
         <form className="constructor__container__upload-container">
           <img className="constructor__container__upload-image" src="upload.svg"></img>
