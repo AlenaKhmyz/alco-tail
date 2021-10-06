@@ -18,10 +18,10 @@ function ConstructorPage() {
   const [shortDescription, setShortDescription] = useState('')
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
-  
-// 2.заливка гифки
 
-  
+  //1. сделать кнопки на удаление элементов в массиве и объекте
+  // 2.заливка гифки
+
   const getIngredients = async () => {
     const response = await axios.get('http://localhost:3004/ingredients')
     setIngredients(response.data)
@@ -79,6 +79,10 @@ function ConstructorPage() {
   }
 
   const addStep = (text ) => {
+    if (!text) {
+      return
+    }
+    
     const step = {
       text
     }
@@ -86,6 +90,12 @@ function ConstructorPage() {
     setStepList(newStep)
     setText('')
   } 
+
+  const deleteStep = (stepIndex) => {
+    const newSteps = [...stepList] 
+    newSteps.splice(stepIndex, 1)
+    setStepList(newSteps)
+  }
 
   const updateSelectedIngredient = (ingredient) => {
     const updatedIngredients =  {...selectedIngredients}
@@ -105,7 +115,7 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
-              { Object.values(selectedIngredients).map( element => <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} />
+              { Object.values(selectedIngredients).map( element => <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} setSelectedIngredients={setSelectedIngredients} selectedIngredients={selectedIngredients} />
               )}
             </ul>
             <input onChange={(event) => {setWord(event.target.value)}}/>
@@ -119,9 +129,12 @@ function ConstructorPage() {
         </div>}
        <div> 
           <ul>
-            {stepList.map( (item) => (
-              <li key={item.text}>{item.text}</li>
-            ))}      
+            {stepList.map( (item,index) => (
+              <>
+                <li key={item.text}>{item.text}</li>
+                <button onClick={() => deleteStep(index)}>Delete step</button>  
+              </>
+            ))}    
           </ul>
           <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
           <button onClick={() => addStep(text)}>Add steps</button>
