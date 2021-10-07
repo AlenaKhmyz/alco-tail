@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import _ from 'lodash'
 
-const IngredientForm = ({element, updateSelectedIngredient, setSelectedIngredients, selectedIngredients }) => {
+const IngredientForm = ({element, updateSelectedIngredient}) => {
   
 
   const onAddCount = () => {
@@ -37,9 +37,7 @@ const IngredientForm = ({element, updateSelectedIngredient, setSelectedIngredien
     
   }
 
-  const deleteIngredient = () => {
-    setSelectedIngredients(_.omit(selectedIngredients,  element.name))
-  }
+ 
 
   const changeUnit = (event) => {
     updateSelectedIngredient({
@@ -63,7 +61,6 @@ const IngredientForm = ({element, updateSelectedIngredient, setSelectedIngredien
           <option value="pcs">pcs</option>
         </select>
       </span>
-      <button onClick={deleteIngredient}>Delete</button>
     </li>
   )
 }

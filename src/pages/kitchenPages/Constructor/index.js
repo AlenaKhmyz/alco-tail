@@ -78,6 +78,10 @@ function ConstructorPage() {
     }
   }
 
+  const deleteIngredient = (element) => {
+    setSelectedIngredients(_.omit(selectedIngredients,  element.name))
+  }
+
   const addStep = (text ) => {
     if (!text) {
       return
@@ -115,7 +119,10 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
-              { Object.values(selectedIngredients).map( element => <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} setSelectedIngredients={setSelectedIngredients} selectedIngredients={selectedIngredients} />
+              { Object.values(selectedIngredients).map( element => <>
+                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} />
+                <button onClick={() => deleteIngredient(element)}>Delete</button>
+              </>
               )}
             </ul>
             <input onChange={(event) => {setWord(event.target.value)}}/>
