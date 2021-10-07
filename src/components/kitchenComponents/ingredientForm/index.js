@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 
-const IngredientForm = ({element, updateSelectedIngredient }) => {
+const IngredientForm = ({element, updateSelectedIngredient,  deleteIngredient }) => {
   
 
   const onAddCount = () => {
@@ -61,6 +61,7 @@ const IngredientForm = ({element, updateSelectedIngredient }) => {
           <option value="pcs">pcs</option>
         </select>
       </span>
+      <button onClick={() => deleteIngredient(element)}>Delete</button>
     </li>
   )
 }

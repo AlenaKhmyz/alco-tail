@@ -21,7 +21,7 @@ function ConstructorPage() {
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
 
-  //1. сделать кнопки на удаление элементов в массиве и объекте
+  //1. сделать кнопку редактирования шага
   // 2.заливка гифки
 
   const getIngredients = async () => {
@@ -109,6 +109,11 @@ function ConstructorPage() {
     setSelectedIngredients( updatedIngredients)
   }
 
+  const updateStep = (step, index) => {
+    const newSteps = [...stepList]
+    newSteps[index] = step
+    setStepList(newSteps)
+  }
   
   
   return (
@@ -122,10 +127,8 @@ function ConstructorPage() {
           {<div> 
             <ul>
               
-              { Object.values(selectedIngredients).map( element => <>
-                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} />
-                <button onClick={() => deleteIngredient(element)}>Delete</button>
-              </>
+              { Object.values(selectedIngredients).map( element => 
+                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
               )}
               
             </ul>
@@ -141,10 +144,7 @@ function ConstructorPage() {
        <div> 
           <ul>
             {stepList.map( (item,index) => (
-              <>
-                <StepForm stepList={stepList} setStepList={setStepList} item={item} text={text} setText={setText}/>
-                <button onClick={() => deleteStep(index)}>Delete step</button>  
-              </>
+                <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
             ))}    
           </ul>
           <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
