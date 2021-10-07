@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import _ from 'lodash'
 
-const IngredientForm = ({element, updateSelectedIngredient}) => {
+
+const IngredientForm = ({element, updateSelectedIngredient }) => {
   
 
   const onAddCount = () => {

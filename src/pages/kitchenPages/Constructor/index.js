@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios'
+import _ from 'lodash'
 
 import '../../../scss/components/_constructor.scss'
-import IngredientForm from '../../../components/ingredientForm'
+import IngredientForm from '../../../components/kitchenComponents/ingredientForm'
+import StepForm from '../../../components/kitchenComponents/stepForm'
 
 function ConstructorPage() {
 
@@ -86,7 +88,7 @@ function ConstructorPage() {
     if (!text) {
       return
     }
-    
+
     const step = {
       text
     }
@@ -119,11 +121,13 @@ function ConstructorPage() {
         {showDropDown && <div>
           {<div> 
             <ul>
+              
               { Object.values(selectedIngredients).map( element => <>
                 <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient} />
                 <button onClick={() => deleteIngredient(element)}>Delete</button>
               </>
               )}
+              
             </ul>
             <input onChange={(event) => {setWord(event.target.value)}}/>
             <ul>
@@ -138,7 +142,7 @@ function ConstructorPage() {
           <ul>
             {stepList.map( (item,index) => (
               <>
-                <li key={item.text}>{item.text}</li>
+                <StepForm stepList={stepList} setStepList={setStepList} item={item} text={text} setText={setText}/>
                 <button onClick={() => deleteStep(index)}>Delete step</button>  
               </>
             ))}    
