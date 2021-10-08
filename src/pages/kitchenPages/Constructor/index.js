@@ -21,7 +21,7 @@ function ConstructorPage() {
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
 
-  //1. сделать кнопку редактирования шага
+  //1. 
   // 2.заливка гифки
 
   const getIngredients = async () => {

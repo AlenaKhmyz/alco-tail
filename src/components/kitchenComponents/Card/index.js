@@ -7,6 +7,7 @@ import {ROUTES} from '../../../const'
 const MenuDishes = () => {
 
     const [dishes, setDishes] = useState([])
+    
 
     const getDishes = async () => {
        const response = await axios.get(`http://localhost:3004/dishes`)
@@ -41,11 +42,11 @@ const MenuDishes = () => {
             {dishes.map(dish => <div className = "dish">
             <h3 className ="dish__title">{dish.name}</h3>
             <p className="dish__short-description">{dish.shortDescription}</p>
-            <p className="dish__descripton">{dish.description}</p>
+           <p className="dish__descripton">{dish.description}</p>
             <ul className="dish__ingredients">
-                {dish.products.map(({ingredient}) => {
+                {Object.values(dish.ingredients).map(({name}) => {
                     return(
-                        <li className="dish__ingredients__element">{ingredient}</li>
+                        <li className="dish__ingredients__element">{name}</li>
                     )
                 })}
             </ul>
