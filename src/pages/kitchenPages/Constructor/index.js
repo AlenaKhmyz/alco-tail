@@ -21,7 +21,7 @@ function ConstructorPage() {
   const [showDropDown, setShowDropDown] = useState(false)
   const [word, setWord] = useState('')
 
-  //1. 
+  //1. исправить блюда на сервере(поменять названия полей у  блюд, которые вводили вручную) и протестить
   // 2.заливка гифки
 
   const getIngredients = async () => {

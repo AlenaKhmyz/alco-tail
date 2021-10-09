@@ -8,6 +8,7 @@ import BarPage from './pages/barPages/Bar'
 import KitchenPage from './pages/kitchenPages/Kitchen'
 import HomePage from './pages/Home'
 import ConstructorPage from './pages/kitchenPages/Constructor'
+import EditDishPage from './pages/kitchenPages/editDish'
 
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
           
           <Route path={ROUTES.CONSTRUCTOR}>
             <ConstructorPage />
+          </Route>
+
+          <Route path={'/editdish/:id'}>
+            <EditDishPage />
           </Route>
          
           <Route path={ROUTES.HOME} component={HomePage} />

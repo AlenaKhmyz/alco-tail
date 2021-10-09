@@ -50,7 +50,7 @@ const MenuDishes = () => {
                     )
                 })}
             </ul>
-            <button>Edit</button>
+            <Link to = {`/editdish/${dish.id}`}> Edit dish </Link>
             </div>)}
             <Link to = {ROUTES.CONSTRUCTOR}>ADD</Link> 
         </div>
