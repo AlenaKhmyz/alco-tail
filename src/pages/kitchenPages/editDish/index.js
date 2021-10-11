@@ -1,36 +1,80 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios'
 import _ from 'lodash'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 
 import IngredientForm from '../../../components/kitchenComponents/ingredientForm'
+import StepForm from '../../../components/kitchenComponents/stepForm'
 
-function EditDishPage() {
+function EditDishPage(item) {
   const [dish, setDish] = useState({})
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [ingredients, setIngredients] = useState({})
   const [stepList, setStepList] = useState([])
   const [description, setDescription] = useState('')
+  const [text, setText] = useState(item.text)
 
   const {id} = useParams()
-  console.log(id)
+
+  const history = useHistory()
 
   const getDish = async () => {
     const response = await axios.get(`http://localhost:3004/dishes/${id}`)
+    console.log(response.data)
     setDish(response.data)
     setName(response.data.name)
     setShortDescription(response.data.shortDescription)
     setIngredients(response.data.ingredients)
+    setStepList(response.data.steps)
     setDescription(response.data.description)
+
   } 
 
   useEffect(() => {
     getDish()
   }, [])
 
+ 
 
-  console.log(dish)
+  const saveDishes = async () => {
+    await axios.patch(`http://localhost:3004/dishes/${id}`, {
+      name: name,
+      shortDescription,
+      ingredients,
+      steps: stepList,
+      description
+    })
+    history.goBack()
+  }
+
+  const addStep = (text ) => {
+    if (!text) {
+      return
+    }
+
+    const step = {
+      text
+    }
+    const newStep = [...stepList, step]
+    setStepList(newStep)
+    setText('')
+  } 
+
+  const deleteStep = (stepIndex) => {
+    const newSteps = [...stepList] 
+    newSteps.splice(stepIndex, 1)
+    setStepList(newSteps)
+  }
+
+
+  const updateStep = (step, index) => {
+    const newSteps = [...stepList]
+    newSteps[index] = step
+    setStepList(newSteps)
+  }
+
+  console.log(stepList)
   return (
     <div className="edit-dish">
       <div className="edit-dish__container">
@@ -55,9 +99,16 @@ function EditDishPage() {
               <span>или перетащите его сюда</span>
             </div>
         </form> */}
+        <ul>
+            {stepList.map( (item,index) => (
+              <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
+            ))}    
+        </ul>
+        <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
+        <button onClick={() => addStep(text)}>Add steps</button>
         <textarea className="edit-dish__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
       </div>
-      {/* <button className="edit-dish__button" onClick={createDishes}>Save</button> */}
+      <button className="edit-dish__button" onClick={saveDishes}>Save</button>
     </div> 
   )
   }
