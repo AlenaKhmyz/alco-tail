@@ -11,13 +11,24 @@ function EditDishPage(item) {
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [ingredients, setIngredients] = useState({})
+  const [ingredientsCount, setIngredientCount] = useState ({
+    ingredientsCount: 0
+  })
   const [stepList, setStepList] = useState([])
   const [description, setDescription] = useState('')
   const [text, setText] = useState(item.text)
+  const [showDropDown, setShowDropDown] = useState(false)
+  const [selectedIngredients, setSelectedIngredients] = useState({})
+  const [word, setWord] = useState('')
 
   const {id} = useParams()
 
   const history = useHistory()
+
+  const getIngredients = async () => {
+    const response = await axios.get('http://localhost:3004/ingredients')
+    setIngredients(response.data)
+  }
 
   const getDish = async () => {
     const response = await axios.get(`http://localhost:3004/dishes/${id}`)
@@ -36,16 +47,54 @@ function EditDishPage(item) {
   }, [])
 
  
+  const onShowDropDown = () => {
+    setShowDropDown(!showDropDown)
+  }
 
   const saveDishes = async () => {
     await axios.patch(`http://localhost:3004/dishes/${id}`, {
       name: name,
       shortDescription,
-      ingredients,
+      ingredients: selectedIngredients,
       steps: stepList,
       description
     })
     history.goBack()
+  }
+
+  const ingredientSuggestions = useMemo(() => Object.values(ingredients).filter(function(item) {
+    if (item.name.indexOf(word) === -1) {
+      return false
+    } else {
+      return true
+    } 
+  }),[word, ingredients])
+
+  const createIngredient = async () => {
+    await axios.post(`http://localhost:3004/ingredients`, {
+      name: word
+    })
+    getIngredients()
+  }
+
+  const addIngredient = (name, needToCreateIngredient) => {
+    if (!name) {
+      return;
+    }
+    const newIngredients = {...selectedIngredients}
+    newIngredients[name] = {
+      name: name,
+      unit: "kg",
+      amount: 0
+    };
+    setSelectedIngredients(newIngredients)
+    if (needToCreateIngredient) {
+      createIngredient()
+    }
+  }
+
+  const deleteIngredient = (element) => {
+    setSelectedIngredients(_.omit(selectedIngredients,  element.name))
   }
 
   const addStep = (text ) => {
@@ -67,6 +116,12 @@ function EditDishPage(item) {
     setStepList(newSteps)
   }
 
+  const updateSelectedIngredient = (ingredient) => {
+    const updatedIngredients =  {...selectedIngredients}
+    updatedIngredients[ingredient.name] = ingredient
+    setSelectedIngredients( updatedIngredients)
+  }
+
 
   const updateStep = (step, index) => {
     const newSteps = [...stepList]
@@ -81,11 +136,30 @@ function EditDishPage(item) {
         <h3 className="edit-dish__container__title">Dish name</h3>
         <input className="edit-dish__container__name" value={name} onChange={(event) => {setName(event.target.value)}}/>
         <textarea className="edit-dish__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"/>
-        <ul>
+        <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
+        {showDropDown && <div>
+          {<div> 
+            <ul>
+              
+              { Object.values(selectedIngredients).map( element => 
+                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
+              )}
+              
+            </ul>
+            <input onChange={(event) => {setWord(event.target.value)}}/>
+            <ul>
+              {ingredientSuggestions.map( (item, i) => (
+                <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
+              ))}
+            </ul>
+            <button onClick={() => addIngredient(word, true)}>Add</button>        
+          </div>}
+        </div>}
+        {/* <ul>
           { Object.values(ingredients).map( element => 
               <IngredientForm element={element}/>
           )}
-        </ul>
+        </ul> */}
          {/* <button className="edit-dish__container__add-ingredients" onClick={onShowDropDown}> + </button>
        <div> 
           <ul>  
