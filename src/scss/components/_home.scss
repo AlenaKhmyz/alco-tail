@@ -1,0 +1,25 @@
+@import '../config/mixins.scss';
+@import '../config/variables.scss';
+
+.home {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: $black;
+
+  &__bar{
+    @include home;
+    &:hover{
+      @include colorHover
+    }
+  }
+
+  
+
+  &__kitchen{
+    @include home;
+    &:hover{
+      @include colorHover
+    }
+  }
+}

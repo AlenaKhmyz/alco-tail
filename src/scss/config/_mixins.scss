@@ -1,0 +1,21 @@
+@import '../config/variables.scss';
+
+@mixin home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    letter-spacing: 5px;
+    font-family: $fantasy;
+    font-weight: $bold;
+    font-size: xx-large;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: $bodily;
+}
+
+@mixin colorHover {
+    color: $black;
+    background-color: $bodily;
+}

@@ -1,4 +1,4 @@
-import '../../scss/pages/_home.scss'
+import '../../scss/components/_home.scss'
 
 import React from 'react'
 import { Link } from 'react-router-dom';
