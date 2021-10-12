@@ -1,3 +1,5 @@
+import '../../scss/pages/_home.scss'
+
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../const'
@@ -7,8 +9,9 @@ function HomePage() {
 
     return(
         <div className="home">
-                <Link to = {ROUTES.BAR}>Бар</Link>
-                <Link to = {ROUTES.KITCHEN} >Кухня</Link>
+            
+                <Link to = {ROUTES.BAR} className="home__bar">Bar</Link>
+                <Link to = {ROUTES.KITCHEN} className="home__kitchen">Kitchen</Link>
         </div>
     )
 }
