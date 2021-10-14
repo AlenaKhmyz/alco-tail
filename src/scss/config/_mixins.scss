@@ -1,21 +1,49 @@
 @import '../config/variables.scss';
 
 @mixin home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
-    letter-spacing: 5px;
-    font-family: $fantasy;
-    font-weight: $bold;
-    font-size: xx-large;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    color: $bodily;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  letter-spacing: 5px;
+  font-family: $fantasy;
+  font-weight: $bold;
+  font-size: xx-large;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: $bodily;
 }
 
 @mixin colorHover {
-    color: $black;
-    background-color: $bodily;
+  color: $black;
+  background-color: $bodily;
 }
+
+@mixin search {
+  border: none;
+  border-radius: 12.5px;
+  background-color: $black;
+}
+
+@mixin titleCard {
+  font-weight: $normal;
+  font-size: x-large;
+  letter-spacing: 2px;
+  font-family: $impact;  
+}
+
+@mixin shortDescription {
+  font-family: $mono;
+  font-weight: $regular;
+  font-size: medium;
+  color: $bodily; 
+}
+
+@mixin ingredient {
+  font-family: $monospace;
+  font-weight: $normal;
+  font-size: medium;
+}
+
+

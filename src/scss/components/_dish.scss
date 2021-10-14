@@ -1,28 +1,70 @@
+@import '../config/mixins.scss';
+@import '../config/variables.scss';
+
 .dish {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  width: 100vw;
-  background-color: #1B1A1D;
+  background-color: $black;
+
+  &__search {
+    height: 25px;
+    border: 1px solid $bodily;
+    border-radius: 12.5px;
+    margin-bottom: 20px;
+    
+    &__dishes {
+      @include shortDescription;
+      @include search;
+      color: $bodily;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    &__button {
+      @include search;
+    }
+  }
 
   &__card {
     width: 90%;
-    margin-bottom: 5px;
-    border: 1px solid #CCAB86;
+    margin-bottom: 25px;
+    box-shadow: 0 0 16px rgb(0, 0, 0 / 100%);
     border-radius: 15px;
+
+    &__plus {
+      display: flex; 
+      width: 25px;
+      justify-content: center;
+      align-items: center; 
+      height: 25px;
+      margin-bottom: 20px;
+      border: 1px solid $bodily;
+      border-radius: 12.5px;
+
+      &__plus {
+        text-decoration: none;
+        color: $bodily;
+      }
+    }
+
     &__header {
       display: flex;
       flex-direction: row;
       text-align: center;
       align-items: center;
       border-radius: 15px 15px 0 0;
-      background-color: #49484A;
-      color: #CCAB86;
+      background-color: $grey;
+      color: $bodily;
+
       &__title {
         margin-left: auto;
-        margin-right: auto;   
+        margin-right: auto; 
+        @include titleCard;
       }
+
       &__edit {
         display: flex;
         justify-content: center;
@@ -34,7 +76,31 @@
           align-items: center;
           height: 20px;
           width: 20px;
+
         }
+      }
+    }
+
+    &__short-description {
+      display: flex;
+      padding-left: 30px;
+      @include shortDescription
+    }
+
+    &__ingredients {
+      display: flex;
+      flex-direction: row;
+      padding-left: 30px;
+      &__element {
+        padding: 2px 20px;
+        margin-right: 10px;
+        list-style-type: none; 
+        border: 1px solid $bodily;
+        border-radius: 15px;
+        @include ingredient;
+        background-color: $bodily;
+        color: $black;
+
       }
     }
     
