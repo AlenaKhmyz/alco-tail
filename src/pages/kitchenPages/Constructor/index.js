@@ -117,7 +117,7 @@ function ConstructorPage() {
   
   
   return (
-    <div className="consructor">
+    <div className="constructor">
       <div className="constructor__container">
         <h3 className="constructor__container__title">Dish name</h3>
         <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>

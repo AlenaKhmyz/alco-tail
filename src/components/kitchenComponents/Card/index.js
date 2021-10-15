@@ -40,7 +40,7 @@ const MenuDishes = () => {
     console.log(dishes, result)
   }
 
-  console.log(filterDishes)
+  
 
     // const createDishes= async () => {
     //    const response =  await axios.post(`http://localhost:3004/dishes`, {
@@ -71,7 +71,10 @@ const MenuDishes = () => {
         <div className="dish__card__plus">
          <Link to = {ROUTES.CONSTRUCTOR} className="dish__card__plus__plus">+</Link>
         </div>
-          {filterDishes.map(dish => <div className = "dish__card">
+      {filterDishes.map(dish => {
+        console.log(dish)
+        return (
+          <div className = "dish__card">
             <div className="dish__card__header">
               <h3 className ="dish__card__header__title">{dish.name}</h3>
               <Link to = {`/editdish/${dish.id}`} className ="dish__card__header__edit" > <FontAwesomeIcon icon={faEdit} color="#CCAB86"/> </Link>
@@ -79,12 +82,15 @@ const MenuDishes = () => {
             <p className="dish__card__short-description">{dish.shortDescription}</p>
             <ul className="dish__card__ingredients">
               {Object.values(dish.ingredients).map(({name}) => {
+                
                 return(
                   <li className="dish__card__ingredients__element">{name}</li>
                 )
               })}
             </ul> 
-          </div>)}
+          </div>
+        )
+      })}
         
       
     </div>

@@ -31,6 +31,10 @@
     {
       "name": "pork",
       "id": 9
+    },
+    {
+      "name": "potato",
+      "id": 10
     }
   ],
   "cocktails": [
@@ -83,103 +87,91 @@
   ],
   "dishes": [
     {
-      "id": 1,
-      "name": "dish name 1",
-      "shortDescription": "five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "description": "Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.",
-      "products": [
-        {
-          "ingredient": "chicken",
-          "color": "rgb(132, 160, 236)",
-          "amount": 200,
-          "unit": "g"
-        },
-        {
-          "ingredient": "dough",
-          "color": "rgb(136, 136, 136)",
-          "amount": 350,
-          "unit": "г"
-        },
-        {
-          "ingredient": "jalapeno",
-          "color": "rgb(92, 197, 230)",
-          "amount": 20,
-          "unit": "g"
-        }
-      ],
-      "steps": []
-    },
-    {
-      "id": 2,
-      "name": "dish name 2",
-      "shortDescription": "of Letraset sheets containing Lorem Ipsum passages, and more recently with",
-      "description": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc",
-      "products": [
-        {
-          "ingredient": "шишки",
-          "color": "rgb(250, 226, 90)",
-          "amount": 400,
-          "unit": "кг"
-        },
-        {
-          "ingredient": "желуди",
-          "color": "rgb(250, 141, 90)",
-          "amount": 100,
-          "unit": "т"
-        },
-        {
-          "ingredient": "разъяснения",
-          "color": "rgb(247, 142, 247)",
-          "amount": 200,
-          "unit": "г"
-        },
-        {
-          "ingredient": "приветы",
-          "color": "rgb(143, 230, 86)",
-          "amount": 1,
-          "unit": "шт"
-        },
-        {
-          "ingredient": "видосики",
-          "color": "rgb(255, 255, 255)",
-          "amount": 1,
-          "unit": "шт"
-        },
-        {
-          "ingredient": "кисло-сладкий соус",
-          "color": "rgb(201, 230, 123)",
-          "amount": 50,
-          "unit": "г"
-        },
-        {
-          "ingredient": "кисло-сладкий соус",
-          "color": "rgb(201, 230, 123)",
-          "amount": 50,
-          "unit": "г"
-        }
-      ],
+      "name": "ded1",
+      "shortDescription": "ded",
+      "description": "ded",
+      "ingredients": {},
       "steps": [
         {
-          "text": "The first line of Lorem Ipsum",
-          "photo": "",
-          "animation": ""
+          "text": "ded"
         },
         {
-          "text": "undoubtable source. Lorem Ipsum comes from sections",
-          "photo": "",
-          "animation": ""
-        },
-        {
-          "text": "variations of passages of Lorem Ipsum available, but the majority have suffered",
-          "photo": "",
-          "animation": ""
-        },
-        {
-          "text": "undoubtable source. Lorem Ipsum comes from sections",
-          "photo": "",
-          "animation": ""
+          "text": "ded"
         }
-      ]
+      ],
+      "id": 1
+    },
+    {
+      "name": "ded",
+      "shortDescription": "ded",
+      "description": "ded",
+      "ingredients": {},
+      "steps": [
+        {
+          "text": "ded"
+        },
+        {
+          "text": "ded"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "ded",
+      "shortDescription": "ded",
+      "description": "ded",
+      "ingredients": {
+        "potato": {
+          "name": "potato",
+          "unit": "kg",
+          "amount": 0
+        },
+        "lemon": {
+          "name": "lemon",
+          "unit": "kg",
+          "amount": 0
+        },
+        "cow": {
+          "name": "cow",
+          "unit": "kg",
+          "amount": 0
+        }
+      },
+      "steps": [
+        {
+          "text": "ded"
+        },
+        {
+          "text": "ded"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "ded",
+      "shortDescription": "ded",
+      "description": "ded",
+      "ingredients": {
+        "potato": {
+          "name": "potato",
+          "unit": "kg",
+          "amount": 0
+        },
+        "lemon": {
+          "name": "lemon",
+          "unit": "kg",
+          "amount": 0
+        }
+      },
+      "steps": [
+        {
+          "text": "ded"
+        },
+        {
+          "text": "ded"
+        }
+      ],
+      "id": 4
     }
   ]
 }
