@@ -33,8 +33,12 @@
       "id": 9
     },
     {
-      "name": "potato",
+      "name": "error",
       "id": 10
+    },
+    {
+      "name": "fish",
+      "id": 11
     }
   ],
   "cocktails": [
@@ -87,47 +91,84 @@
   ],
   "dishes": [
     {
-      "name": "ded1",
-      "shortDescription": "ded",
-      "description": "ded",
-      "ingredients": {},
+      "name": "мипип1",
+      "shortDescription": "пкпкиипик1",
+      "description": "123",
+      "ingredients": {
+        "chicken": {
+          "name": "chicken",
+          "unit": "kg",
+          "amount": 0
+        },
+        "lime": {
+          "name": "lime",
+          "unit": "kg",
+          "amount": 0
+        },
+        "fish": {
+          "name": "fish",
+          "unit": "kg",
+          "amount": 0
+        }
+      },
       "steps": [
         {
-          "text": "ded"
+          "text": "0000011111"
         },
         {
-          "text": "ded"
+          "text": "22222221111"
         }
       ],
-      "id": 1
+      "id": 3
     },
     {
-      "name": "ded",
-      "shortDescription": "ded",
-      "description": "ded",
-      "ingredients": {},
-      "steps": [
-        {
-          "text": "ded"
-        },
-        {
-          "text": "ded"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "name": "ded",
-      "shortDescription": "ded",
-      "description": "ded",
+      "name": "мипип",
+      "shortDescription": "пкпкиипик",
+      "description": "",
       "ingredients": {
         "potato": {
           "name": "potato",
           "unit": "kg",
           "amount": 0
         },
+        "chicken": {
+          "name": "chicken",
+          "unit": "kg",
+          "amount": 0
+        },
+        "lime": {
+          "name": "lime",
+          "unit": "kg",
+          "amount": 0
+        }
+      },
+      "steps": [
+        {
+          "text": "0000011111"
+        },
+        {
+          "text": "22222221111"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "name": "cxcxxccccxcx1",
+      "shortDescription": "122",
+      "description": "",
+      "ingredients": {
+        "pepperoni": {
+          "name": "pepperoni",
+          "unit": "kg",
+          "amount": 0
+        },
         "lemon": {
           "name": "lemon",
+          "unit": "kg",
+          "amount": 0
+        },
+        "lime": {
+          "name": "lime",
           "unit": "kg",
           "amount": 0
         },
@@ -139,39 +180,21 @@
       },
       "steps": [
         {
-          "text": "ded"
+          "text": "ccccvcv"
         },
         {
-          "text": "ded"
+          "text": "vvvvv"
         }
       ],
-      "id": 3
+      "id": 5
     },
     {
-      "name": "ded",
-      "shortDescription": "ded",
-      "description": "ded",
-      "ingredients": {
-        "potato": {
-          "name": "potato",
-          "unit": "kg",
-          "amount": 0
-        },
-        "lemon": {
-          "name": "lemon",
-          "unit": "kg",
-          "amount": 0
-        }
-      },
-      "steps": [
-        {
-          "text": "ded"
-        },
-        {
-          "text": "ded"
-        }
-      ],
-      "id": 4
+      "name": "",
+      "shortDescription": "",
+      "description": "",
+      "ingredients": {},
+      "steps": [],
+      "id": 6
     }
   ]
 }

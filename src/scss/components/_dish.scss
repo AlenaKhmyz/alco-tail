@@ -13,9 +13,12 @@
     border: 1px solid $bodily;
     border-radius: 12.5px;
     margin-bottom: 20px;
-    
+    ::placeholder {
+      padding-left: 0.7em;
+    }
+
     &__dishes {
-      @include shortDescription;
+      @include description;
       @include search;
       color: $bodily;
       &:focus-visible {
@@ -84,7 +87,7 @@
     &__short-description {
       display: flex;
       padding-left: 30px;
-      @include shortDescription
+      @include description;
     }
 
     &__ingredients {

@@ -11,84 +11,148 @@
   min-height: 100vh;
   background-color: $black;
 
-  &__container {
+  
+
+  &__card {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 70%;
     box-shadow: 0 0 16px rgb(0, 0, 0 / 100%);
     border-radius: 25px;
 
-    &__title {
-      @include titleCard;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      margin: 0;
-      border-radius: 15px 15px 0 0;
-      background-color: $grey;
-      font-size: xx-large;
-      color: $bodily;
-    }
+      &__title {
+        @include titleCard;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        margin: 0;
+        border-radius: 15px 15px 0 0;
+        background-color: $grey;
+        font-size: xx-large;
+        color: $bodily;
+      }
 
-    &__name {
-      margin: 1rem;
-    }
+      &__form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
 
-    &__short-description {
-      margin: 1rem;
-    }
+        &__container {
+          display: flex;
+          flex-direction: column;
+          width: 60%;
+          margin: 1.5rem;
+          &__name {
+            width: 80%;
+            @include name;
+            @include field;
+          }
+      
+          &__short-description {
+            width: 80%;
+            margin: 1rem;
+            @include field;
+            @include description;
+          }
+      
+          &__add-ingredients {
+            width: 80%;
+            margin-top: 1rem;
+            padding: 0.5em 0;
+            @include button;
+            @include label;
+          }
+      
+          &__steps-card {
+            display: flex;
+            flex-direction: column;
 
-    &__add-ingredients {
-      margin: 1rem;
-    }
+            &__field {
+              width: 80%;
+      
+              @include field;
+              @include step;
+            }
 
-    &__description {
-      margin: 1rem;
+            &__button {
+              padding: 0.5em 0;
+              width: 80%;
+              @include button;
+              @include label;
+            }
+          }
+      
+          &__description {
+            width: 80%;
+            margin: 1rem;
+      
+            @include field;
+            @include description;
+          }
+    
+        }
+    
+        
+    
+        &__upload-card {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 30%;
+          height: 20rem;
+          outline: 2px dashed #5d5d5d;
+          outline-offset: -12px;
+          font-family: "Segoe UI";
+        }
+    
+        &__upload-image {
+          width: 40%;
+          margin-bottom: 20px;
+          user-select: none;
+        }
+    
+        &__upload-card label {
+          font-weight: bold;
+        }
+    
+        &__upload-card label:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+    
+        &__upload-card div {
+          position: relative;
+          z-index: 10;
+        }
+    
+        &__upload-card input[type="file"] {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          position: absolute;
+          z-index: -10;
+        }
+    
+        &__upload-card input[type="file"]:focus + label {
+          outline: -webkit-focus-ring-color auto 5px;
+        }
     }
-
-    &__upload-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 200px;
-      height: 200px;
-      outline: 2px dashed #5d5d5d;
-      outline-offset: -12px;
-      font-family: "Segoe UI";
-    }
-
-    &__upload-image {
-      width: 40%;
-      margin-bottom: 20px;
-      user-select: none;
-    }
-
-    &__upload-container label {
-      font-weight: bold;
-    }
-
-    &__upload-container label:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    &__upload-container div {
-      position: relative;
-      z-index: 10;
-    }
-
-    &__upload-container input[type="file"] {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
+    &__button {
       position: absolute;
-      z-index: -10;
+      bottom: -1rem;
+      padding: 0.5rem 1.8rem;
+  
+      @include button;
+      @include label;
     }
-
-    &__upload-container input[type="file"]:focus + label {
-      outline: -webkit-focus-ring-color auto 5px;
-    }
+    
   }
 }

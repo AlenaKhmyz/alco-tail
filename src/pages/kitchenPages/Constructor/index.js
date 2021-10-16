@@ -118,49 +118,55 @@ function ConstructorPage() {
   
   return (
     <div className="constructor">
-      <div className="constructor__container">
-        <h3 className="constructor__container__title">Dish name</h3>
-        <input className="constructor__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
-        <textarea className="constructor__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"></textarea>
-        <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
-        {showDropDown && <div>
-          {<div> 
-            <ul>
-              
-              { Object.values(selectedIngredients).map( element => 
-                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
-              )}
-              
-            </ul>
-            <input onChange={(event) => {setWord(event.target.value)}}/>
-            <ul>
-              {ingredientSuggestions.map( (item, i) => (
-                <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
-              ))}
-            </ul>
-            <button onClick={() => addIngredient(word, true)}>Add</button>        
+      <div className="constructor__card">
+        <h3 className="constructor__card__title">Dish name</h3>
+        <div className="constructor__card__form">
+        <div className="constructor__card__form__container">
+          <input className="constructor__card__form__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
+          <textarea className="constructor__card__form__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description" rows="1"></textarea>
+          <button className="constructor__card__form__container__add-ingredients" onClick={onShowDropDown}>Add ingredient</button>
+          {showDropDown && <div>
+            {<div> 
+              <ul>
+                
+                { Object.values(selectedIngredients).map( element => 
+                  <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
+                )}
+                
+              </ul>
+              <input onChange={(event) => {setWord(event.target.value)}}/>
+              <ul>
+                {ingredientSuggestions.map( (item, i) => (
+                  <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
+                ))}
+              </ul>
+              <button onClick={() => addIngredient(word, true)}>Add</button>        
+            </div>}
           </div>}
-        </div>}
-       <div> 
-          <ul>
-            {stepList.map( (item,index) => (
-                <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
-            ))}    
-          </ul>
-          <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
-          <button onClick={() => addStep(text)}>Add steps</button>
+          <div className="constructor__card__form__container__steps-card"> 
+            <ul className="constructor__card__form__container__steps-card__list">
+              {stepList.map( (item,index) => (
+                  <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
+              ))}    
+            </ul>
+            <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps" rows="1" className="constructor__card__form__container__steps-card__field"/>  
+            <button onClick={() => addStep(text)} className="constructor__card__form__container__steps-card__button">Add step</button>
+          </div>
+          <textarea className="constructor__card__form__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description" rows="1"></textarea>
+        </div>  
+          
+          <form className="constructor__card__form__upload-card">
+            <img className="constructor__card__form__upload-image" src="upload.svg"></img>
+              <div>
+                <input className="constructor__card__form__file-input" type="file" name="file" multiple></input>
+                <label for="file-input">Выберите файл</label>
+                <span>или перетащите его сюда</span>
+              </div>
+          </form>
         </div>
-        <form className="constructor__container__upload-container">
-          <img className="constructor__container__upload-image" src="upload.svg"></img>
-            <div>
-              <input className="constructor__container__file-input" type="file" name="file" multiple></input>
-              <label for="file-input">Выберите файл</label>
-              <span>или перетащите его сюда</span>
-            </div>
-        </form>
-        <textarea className="constructor__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
-      </div>
-      <button className="constructor__button" onClick={createDishes}>Save</button>
+        <button className="constructor__card__button" onClick={createDishes}>SAVE</button>
+      </div> 
+      
     </div> 
   )
   }

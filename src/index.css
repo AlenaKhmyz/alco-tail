@@ -9,6 +9,14 @@ body {
   box-sizing: border-box;
 }
 
+::placeholder {
+  color: #CCAB7C;
+  font-size: 0.8em;
+  font-family: 'Andale Mono';
+  font-weight: 100;
+  filter: contrast(0.3);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -1,0 +1,66 @@
+.cocktail-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 200px;
+  width: 70%;
+  background-color: red;
+}
+
+.cocktail-card__name {
+  width: 30%;
+  background-color: purple;
+}
+
+.cocktail-card__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+  width: 90%;
+  background-color: #051d19;
+}
+
+.cocktail-card__block__inner {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 20px;
+  background-color: #2ae2c3;
+}
+
+.cocktail-card__block__inner__list {
+  margin: 10px;
+  background-color: #a7eee2;
+}
+
+.cocktail-card__block__inner__description {
+  margin: 10px;
+  background-color: #567771;
+}
+
+.cocktail-card__block__inner__btn {
+  margin-bottom: 10px;
+  width: 70px;
+  height: 20px;
+  background-color: #cbfff5;
+}
+
+.cocktail-card__block__video {
+  height: 80%;
+  width: 90%;
+  background-color: #89f7e4;
+}
+/*# sourceMappingURL=main.css.map */

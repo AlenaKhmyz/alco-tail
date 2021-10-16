@@ -33,7 +33,7 @@
   font-family: $impact;  
 }
 
-@mixin shortDescription {
+@mixin description {
   font-family: $mono;
   font-weight: $regular;
   font-size: medium;
@@ -46,4 +46,48 @@
   font-size: medium;
 }
 
+@mixin name {
+  font-family: $fantasy;
+  font-weight: $normal;
+  font-size: $big;
+}
+
+@mixin field {
+  margin: 2rem 0;
+  border: hidden;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $bodily;
+  background: $black;
+  color: $bodily;
+  &:focus-visible {
+    outline: none;
+  }
+
+  ::placeholder {
+    padding-left: 0;
+  }
+}
+
+@mixin step {
+  font-family: $mono;
+  font-weight: $normal;
+  font-size: $medium;
+}
+
+@mixin button {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  border: 1px solid $bodily;
+  border-radius: 12.5px;
+  background-color: $black;
+  color: $bodily;
+}
+
+@mixin label {
+  font-family: $fantasy;
+  font-weight: $regular;
+  font-size: $medium;
+}
 
