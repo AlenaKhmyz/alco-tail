@@ -1,0 +1,59 @@
+@import '../config/mixins.scss';
+@import '../config/variables.scss';
+
+.ingredient-form {
+  @include ingredient;
+  height: 3rem;
+  list-style-type: none;
+  margin-top: 0.3rem;
+  color: $bodily;
+
+  &__name {
+    text-align: center;
+    margin-right: 1rem;   
+  }
+
+  &__count {
+  
+      &__delete {
+      @include counter;
+    }
+
+    &__state {
+      text-align: center;
+      border: 1px solid $bodily;
+      border-radius: 12.5px;
+      background-color: $black;
+      color: $bodily;
+    }
+    &__add {
+      @include counter;
+    }
+    &__form-control {
+      @include field;
+      margin-left: 1rem;
+
+      &__unit {
+        border: hidden;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: $bodily;
+      }
+      
+    }
+  }
+  
+  &__button-delete {
+    @include button;
+    @include label;
+    margin-left: 1rem;
+    padding: 0.5rem;
+  }
+  // &__
+  // &__
+  // &__
+  // &__
+  // &__
+  // &__
+  // &__
+}

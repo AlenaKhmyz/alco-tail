@@ -75,10 +75,7 @@
   font-size: $medium;
 }
 
-@mixin button {
-  display: flex; 
-  justify-content: center;
-  align-items: center; 
+@mixin button { 
   border: 1px solid $bodily;
   border-radius: 12.5px;
   background-color: $black;
@@ -89,5 +86,12 @@
   font-family: $fantasy;
   font-weight: $regular;
   font-size: $medium;
+}
+
+@mixin counter {
+  border: 1px solid $bodily;
+  border-radius: 4px;
+  background-color: $bodily;
+  color: $black;
 }
 

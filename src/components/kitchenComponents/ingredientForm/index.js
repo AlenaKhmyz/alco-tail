@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import '../../../scss/components/_ingredientForm.scss'
 
 
 const IngredientForm = ({element, updateSelectedIngredient,  deleteIngredient }) => {
@@ -48,20 +49,20 @@ const IngredientForm = ({element, updateSelectedIngredient,  deleteIngredient })
   }
 
   return(
-    <li><span>{element.name}</span>
-      <span className="constructor__container__count">
-        <button className="constructor__container__count__delete" onClick={onSubtractCount}>-</button>
-        <input className="constructor__container__count__state"  value={element.amount} type="text" onChange={changeAmount}/>
-        <button className="constructor__container__count__add" onClick ={onAddCount}>+</button>
-        <select className="form-control" value={element.unit} onChange={changeUnit}>
-          <option value="g">g</option>
-          <option value="kg">kg</option>
-          <option value="ml">ml</option>
-          <option value="l">l</option>
-          <option value="pcs">pcs</option>
+    <li className="ingredient-form"><span className="ingredient-form__name">{element.name}</span>
+      <span className="ingredient-form__count">
+        <button className="ingredient-form__count__delete" onClick={onSubtractCount}>-</button>
+        <input className="ingredient-form__count__state"  value={element.amount} type="text" onChange={changeAmount}/>
+        <button className="ingredient-form__count__add" onClick ={onAddCount}>+</button>
+        <select className="ingredient-form__count__form-control" value={element.unit} onChange={changeUnit}>
+          <option classNme="ingredient-form__count__form-control__unit" value="g">g</option>
+          <option classNme="ingredient-form__count__form-control__unit" value="kg">kg</option>
+          <option classNme="ingredient-form__count__form-control__unit" value="ml">ml</option>
+          <option classNme="ingredient-form__count__form-control__unit" value="l">l</option>
+          <option classNme="ingredient-form__count__form-control__unit" value="pcs">pcs</option>
         </select>
       </span>
-      <button onClick={() => deleteIngredient(element)}>Delete</button>
+      <button onClick={() => deleteIngredient(element)} className="ingredient-form__button-delete">Delete</button>
     </li>
   )
 }
