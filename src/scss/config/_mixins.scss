@@ -1,5 +1,6 @@
 @import '../config/variables.scss';
 
+//components
 @mixin home {
   display: flex;
   align-items: center;
@@ -15,16 +16,51 @@
   color: $bodily;
 }
 
-@mixin colorHover {
-  color: $black;
-  background-color: $bodily;
-}
-
 @mixin search {
   border: none;
   border-radius: 12.5px;
   background-color: $black;
 }
+
+@mixin field {
+  margin: 2rem 0;
+  border: hidden;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $bodily;
+  background: $black;
+  color: $bodily;
+  &:focus-visible {
+    outline: none;
+  }
+
+  ::placeholder {
+    padding-left: 0;
+  }
+}
+
+@mixin button { 
+  border: 1px solid $bodily;
+  border-radius: 12.5px;
+  background-color: $black;
+  color: $bodily;
+}
+
+@mixin counter {
+  border: 1px solid $bodily;
+  border-radius: 4px;
+  background-color: $bodily;
+  color: $black;
+}
+
+//color
+
+@mixin colorHover {
+  color: $black;
+  background-color: $bodily;
+}
+
+//fonts
 
 @mixin titleCard {
   font-weight: $normal;
@@ -52,46 +88,16 @@
   font-size: $big;
 }
 
-@mixin field {
-  margin: 2rem 0;
-  border: hidden;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: $bodily;
-  background: $black;
-  color: $bodily;
-  &:focus-visible {
-    outline: none;
-  }
-
-  ::placeholder {
-    padding-left: 0;
-  }
-}
-
 @mixin step {
   font-family: $mono;
   font-weight: $normal;
   font-size: $medium;
 }
 
-@mixin button { 
-  border: 1px solid $bodily;
-  border-radius: 12.5px;
-  background-color: $black;
-  color: $bodily;
-}
+
 
 @mixin label {
   font-family: $fantasy;
   font-weight: $regular;
   font-size: $medium;
 }
-
-@mixin counter {
-  border: 1px solid $bodily;
-  border-radius: 4px;
-  background-color: $bodily;
-  color: $black;
-}
-
