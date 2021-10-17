@@ -54,14 +54,12 @@
 }
 
 //color
-
 @mixin colorHover {
   color: $black;
   background-color: $bodily;
 }
 
 //fonts
-
 @mixin titleCard {
   font-weight: $normal;
   font-size: x-large;

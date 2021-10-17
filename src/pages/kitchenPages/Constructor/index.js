@@ -127,20 +127,20 @@ function ConstructorPage() {
           <button className="constructor__card__form__container__add-ingredients" onClick={onShowDropDown}>Add ingredient</button>
           {showDropDown && <div>
             {<div> 
-              <ul>
+              <ul className="constructor__card__form__container__selected-ingredients">
                 
                 { Object.values(selectedIngredients).map( element => 
                   <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
                 )}
                 
               </ul>
-              <input onChange={(event) => {setWord(event.target.value)}}/>
-              <ul>
+              <input onChange={(event) => {setWord(event.target.value)}} className="constructor__card__form__container__field-ingredient" placeholder="*Enter the name of the ingredient"/>
+              <ul className="constructor__card__form__container__list-ingredients">
                 {ingredientSuggestions.map( (item, i) => (
-                  <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
+                  <li key={item.id} className="constructor__card__form__container__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="constructor__card__form__container__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
                 ))}
               </ul>
-              <button onClick={() => addIngredient(word, true)}>Add</button>        
+              <button onClick={() => addIngredient(word, true)} className="constructor__card__form__container__add">Add</button>        
             </div>}
           </div>}
           <div className="constructor__card__form__container__steps-card"> 

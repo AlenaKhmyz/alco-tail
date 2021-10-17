@@ -14,12 +14,14 @@
   
 
   &__card {
+    width: 70%;
+    height: 37rem;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    overflow: auto;
     box-shadow: 0 0 16px rgb(0, 0, 0 / 100%);
     border-radius: 25px;
 
@@ -40,7 +42,7 @@
       &__form {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: start;
         justify-content: start;
         width: 100%;
 
@@ -48,7 +50,8 @@
           display: flex;
           flex-direction: column;
           width: 60%;
-          margin: 1.5rem;
+          margin: 0 2rem;
+          
           &__name {
             width: 80%;
             @include name;
@@ -59,7 +62,6 @@
             @include field;
             @include description;
             width: 80%;
-            margin: 1rem;
           }
       
           &__add-ingredients { 
@@ -69,7 +71,38 @@
             margin: 1rem 0 2rem 0;
             padding: 0.5em 0;
           }
-      
+          
+          &__field-ingredient {
+            @include field;
+            @include ingredient;
+            height: 2rem;
+            display: flex;
+            margin: 0;
+            width: 80%;
+          }
+
+          &__list-ingredients {
+            height: 11rem;
+            overflow: auto;
+            &__suggestion-ingredient {
+              list-style-type: none;
+              &__button {
+                @include button;
+                padding: 0.5rem 1rem;
+                margin-bottom: 0.7rem;
+              }
+            }
+          }
+
+          
+
+          &__add {
+            @include button;
+            padding: 0.5rem 1rem;
+            background-color: $bodily;
+            color: $black;
+          }
+
           &__steps-card {
             display: flex;
             flex-direction: column;
@@ -147,7 +180,7 @@
     }
     &__button {
       position: absolute;
-      bottom: -1rem;
+      bottom: 0;
       padding: 0.5rem 1.8rem;
   
       @include button;
