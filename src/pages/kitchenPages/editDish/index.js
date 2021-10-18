@@ -134,55 +134,60 @@ function EditDishPage(item) {
     <div className="edit-dish">
       <div className="edit-dish__container">
         <h3 className="edit-dish__container__title">Dish name</h3>
-        <input className="edit-dish__container__name" value={name} onChange={(event) => {setName(event.target.value)}}/>
-        <textarea className="edit-dish__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"/>
-        <button className="constructor__container__add-ingredients" onClick={onShowDropDown}> + </button>
-        {showDropDown && <div>
-          {<div> 
-            <ul>
-              
-              { Object.values(selectedIngredients).map( element => 
-                <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
+        <div className="edit-dish__container__form">
+          <div className="edit-dish__container__form__card">
+            <input className="edit-dish__container__form__card__name" value={name} onChange={(event) => {setName(event.target.value)}}/>
+            <textarea className="edit-dish__container__form__card__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description"/>
+            <button className="edit-dish__container__form__card__add-ingredients" onClick={onShowDropDown}> + </button>
+            {showDropDown && <div>
+              {<div> 
+                <ul>
+                  
+                  { Object.values(selectedIngredients).map( element => 
+                    <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
+                  )}
+                  
+                </ul>
+                <input onChange={(event) => {setWord(event.target.value)}}/>
+                <ul>
+                  {ingredientSuggestions.map( (item, i) => (
+                    <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
+                  ))}
+                </ul>
+                <button onClick={() => addIngredient(word, true)}>Add</button>        
+              </div>}
+            </div>}
+            {/* <ul>
+              { Object.values(ingredients).map( element => 
+                  <IngredientForm element={element}/>
               )}
-              
-            </ul>
-            <input onChange={(event) => {setWord(event.target.value)}}/>
-            <ul>
-              {ingredientSuggestions.map( (item, i) => (
-                <li key={item.id}><button onClick={ () => { addIngredient(item.name, false)}}>{item.name}</button></li>
-              ))}
-            </ul>
-            <button onClick={() => addIngredient(word, true)}>Add</button>        
-          </div>}
-        </div>}
-        {/* <ul>
-          { Object.values(ingredients).map( element => 
-              <IngredientForm element={element}/>
-          )}
-        </ul> */}
-         {/* <button className="edit-dish__container__add-ingredients" onClick={onShowDropDown}> + </button>
-       <div> 
-          <ul>  
-          </ul>
-        </div>
-        <form className="edit-dish__container__upload-container">
-          <img className="edit-dish__container__upload-image" src="upload.svg"></img>
-            <div>
-              <input className="edit-dish__container__file-input" type="file" name="file" multiple></input>
-              <label for="file-input">Выберите файл</label>
-              <span>или перетащите его сюда</span>
+            </ul> */}
+            {/* <button className="edit-dish__container__add-ingredients" onClick={onShowDropDown}> + </button>
+          <div> 
+              <ul>  
+              </ul>
             </div>
-        </form> */}
-        <ul>
-            {stepList.map( (item,index) => (
-              <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
-            ))}    
-        </ul>
-        <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
-        <button onClick={() => addStep(text)}>Add steps</button>
-        <textarea className="edit-dish__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
+            <form className="edit-dish__container__upload-container">
+              <img className="edit-dish__container__upload-image" src="upload.svg"></img>
+                <div>
+                  <input className="edit-dish__container__file-input" type="file" name="file" multiple></input>
+                  <label for="file-input">Выберите файл</label>
+                  <span>или перетащите его сюда</span>
+                </div>
+            </form> */}
+            <ul>
+                {stepList.map( (item,index) => (
+                  <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
+                ))}    
+            </ul>
+            <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps"/>  
+            <button onClick={() => addStep(text)}>Add steps</button>
+            <textarea className="edit-dish__container__form__card__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>
+          </div>
+        </div>
+        <button className="edit-dish__container__button" onClick={saveDishes}>Save</button>
       </div>
-      <button className="edit-dish__button" onClick={saveDishes}>Save</button>
+      
     </div> 
   )
   }

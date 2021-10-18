@@ -121,39 +121,39 @@ function ConstructorPage() {
       <div className="constructor__card">
         <h3 className="constructor__card__title">Dish name</h3>
         <div className="constructor__card__form">
-        <div className="constructor__card__form__container">
-          <input className="constructor__card__form__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
-          <textarea className="constructor__card__form__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description" rows="1"></textarea>
-          <button className="constructor__card__form__container__add-ingredients" onClick={onShowDropDown}>Add ingredient</button>
-          {showDropDown && <div>
-            {<div> 
-              <ul className="constructor__card__form__container__selected-ingredients">
-                
-                { Object.values(selectedIngredients).map( element => 
-                  <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
-                )}
-                
-              </ul>
-              <input onChange={(event) => {setWord(event.target.value)}} className="constructor__card__form__container__field-ingredient" placeholder="*Enter the name of the ingredient"/>
-              <ul className="constructor__card__form__container__list-ingredients">
-                {ingredientSuggestions.map( (item, i) => (
-                  <li key={item.id} className="constructor__card__form__container__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="constructor__card__form__container__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
-                ))}
-              </ul>
-              <button onClick={() => addIngredient(word, true)} className="constructor__card__form__container__add">Add</button>        
+          <div className="constructor__card__form__container">
+            <input className="constructor__card__form__container__name" value={name} onChange={(event) => {setName(event.target.value)}} placeholder="*Enter the name of the dish"></input>
+            <textarea className="constructor__card__form__container__short-description" value={shortDescription} onChange={(event) => {setShortDescription(event.target.value)}} placeholder="*Short description" rows="1"></textarea>
+            <button className="constructor__card__form__container__add-ingredients" onClick={onShowDropDown}>Add ingredient</button>
+            {showDropDown && <div>
+              {<div> 
+                <ul className="constructor__card__form__container__selected-ingredients">
+                  
+                  { Object.values(selectedIngredients).map( element => 
+                    <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
+                  )}
+                  
+                </ul>
+                <input onChange={(event) => {setWord(event.target.value)}} className="constructor__card__form__container__field-ingredient" placeholder="*Enter the name of the ingredient"/>
+                <ul className="constructor__card__form__container__list-ingredients">
+                  {ingredientSuggestions.map( (item, i) => (
+                    <li key={item.id} className="constructor__card__form__container__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="constructor__card__form__container__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
+                  ))}
+                </ul>
+                <button onClick={() => addIngredient(word, true)} className="constructor__card__form__container__add">Add</button>        
+              </div>}
             </div>}
-          </div>}
-          <div className="constructor__card__form__container__steps-card"> 
-            <ul className="constructor__card__form__container__steps-card__list">
-              {stepList.map( (item,index) => (
-                  <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
-              ))}    
-            </ul>
-            <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps" rows="1" className="constructor__card__form__container__steps-card__field"/>  
-            <button onClick={() => addStep(text)} className="constructor__card__form__container__steps-card__button">Add step</button>
-          </div>
-          <textarea className="constructor__card__form__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description" rows="1"></textarea>
-        </div>  
+            <div className="constructor__card__form__container__steps-card"> 
+              <ul className="constructor__card__form__container__steps-card__list">
+                {stepList.map( (item,index) => (
+                    <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
+                ))}    
+              </ul>
+              <textarea value={text} onChange={(event) => {setText(event.target.value)}} placeholder="*Steps" rows="1" className="constructor__card__form__container__steps-card__field"/>  
+              <button onClick={() => addStep(text)} className="constructor__card__form__container__steps-card__button">Add step</button>
+            </div>
+            <textarea className="constructor__card__form__container__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description" rows="1"></textarea>
+          </div>  
           
           <form className="constructor__card__form__upload-card">
             <img className="constructor__card__form__upload-image" src="upload.svg"></img>
