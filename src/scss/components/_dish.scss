@@ -46,10 +46,25 @@
       margin-bottom: 20px;
       border: 1px solid $bodily;
       border-radius: 12.5px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    
+      &:hover {
+        background-color: $bodily;
+        color: $black;
+      }
+      
 
       &__plus {
         text-decoration: none;
         color: $bodily;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      
+        &:hover {
+          background-color: $bodily;
+          color: $black;
+        }
       }
     }
 

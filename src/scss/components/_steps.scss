@@ -1,0 +1,30 @@
+@import "../config/mixins.scss";
+@import "../config/variables.scss";
+
+.step {
+  @include step;
+  margin: 0.5rem;
+  list-style-type: none;
+  color: $bodily;
+
+  &__text {
+    @include field;
+  }
+
+  &__delete {
+    @include button;
+
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  &__save {
+    @include button;
+    padding: 0.5rem;
+  }
+
+  &__edit {
+    @include button;
+    padding: 0.5rem;
+  }
+}

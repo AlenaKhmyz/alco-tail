@@ -142,20 +142,20 @@ function EditDishPage(item) {
             <button className="edit-dish__container__form__card__add-ingredients" onClick={onShowDropDown}> + </button>
             {showDropDown && <div>
               {<div> 
-                <ul className="constructor__container__form__card__selected-ingredients">
+                <ul className="edit-dish__container__form__card__selected-ingredients">
                   
                   { Object.values(selectedIngredients).map( element => 
                     <IngredientForm element={element} updateSelectedIngredient={updateSelectedIngredient}  deleteIngredient={deleteIngredient} />
                   )}
                   
                 </ul>
-                <input onChange={(event) => {setWord(event.target.value)}} className="constructor__container__form__card__field-ingredient" placeholder="*Enter the name of the ingredient"/>
-                <ul className="constructor__container__form__card__list-ingredients">
+                <input onChange={(event) => {setWord(event.target.value)}} className="edit-dish__container__form__card__field-ingredient" placeholder="*Enter the name of the ingredient"/>
+                <ul className="edit-dish__container__form__card__list-ingredients">
                   {ingredientSuggestions.map( (item, i) => (
-                    <li key={item.id} className="constructor__container__form__card__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="constructor__container__form__card__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
+                    <li key={item.id} className="edit-dish__container__form__card__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="edit-dish~__container__form__card__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
                   ))}
                 </ul>
-                <button onClick={() => addIngredient(word, true)} className="constructor__container__form__card__add">Add</button>        
+                <button onClick={() => addIngredient(word, true)} className="edit-dish__container__form__card__add">Add</button>        
               </div>}
             </div>}
             {/* <ul>
@@ -176,14 +176,14 @@ function EditDishPage(item) {
                   <span>или перетащите его сюда</span>
                 </div>
             </form> */}
-             <div className="constructor__container__form__card__steps-card">
-                <ul className="constructor__container__form__card__steps-card__list">
+             <div className="edit-dish__container__form__card__steps-card">
+                <ul className="edit-dish__container__form__card__steps-card__list">
                   {stepList.map( (item,index) => (
                     <StepForm stepList={stepList} item={item} index={index} deleteStep={() => deleteStep(index)} updateStep={updateStep}/>
                   ))}    
                 </ul>
-                <textarea value={text} onChange={(event) => {setText(event.target.value)}}  rows="1" className="constructor__card__form__container__steps-card__field" placeholder="*Steps"/>  
-                <button onClick={() => addStep(text)}  className="constructor__container__form__card__steps-card__button">Add steps</button>
+                <textarea value={text} onChange={(event) => {setText(event.target.value)}}  rows="1" className="edit-dish__container__form__card__steps-card__field" placeholder="*Steps"/>  
+                <button onClick={() => addStep(text)}  className="edit-dish__container__form__card__steps-card__add-steps">Add steps</button>
               </div>
             
             <textarea className="edit-dish__container__form__card__description"  value={description} onChange={(event) => {setDescription(event.target.value)}} placeholder="*Description"></textarea>

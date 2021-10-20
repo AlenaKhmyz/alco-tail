@@ -44,6 +44,13 @@
   border-radius: 12.5px;
   background-color: $black;
   color: $bodily;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $bodily;
+    color: $black;
+  }
 }
 
 @mixin counter {
