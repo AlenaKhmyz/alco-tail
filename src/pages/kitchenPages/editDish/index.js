@@ -152,7 +152,7 @@ function EditDishPage(item) {
                 <input onChange={(event) => {setWord(event.target.value)}} className="edit-dish__container__form__card__field-ingredient" placeholder="*Enter the name of the ingredient"/>
                 <ul className="edit-dish__container__form__card__list-ingredients">
                   {ingredientSuggestions.map( (item, i) => (
-                    <li key={item.id} className="edit-dish__container__form__card__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="edit-dish~__container__form__card__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
+                    <li key={item.id} className="edit-dish__container__form__card__list-ingredients__suggestion-ingredient"><button onClick={ () => { addIngredient(item.name, false)}} className="edit-dishЁ__container__form__card__list-ingredients__suggestion-ingredient__button">{item.name}</button></li>
                   ))}
                 </ul>
                 <button onClick={() => addIngredient(word, true)} className="edit-dish__container__form__card__add">Add</button>        
