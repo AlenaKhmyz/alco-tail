@@ -158,12 +158,12 @@ function EditDishPage(item) {
                 <button onClick={() => addIngredient(word, true)} className="edit-dish__container__form__card__add">Add</button>        
               </div>}
             </div>}
-            {/* <ul>
+            <ul>
               { Object.values(ingredients).map( element => 
                   <IngredientForm element={element}/>
               )}
-            </ul> */}
-            {/* <button className="edit-dish__container__add-ingredients" onClick={onShowDropDown}> + </button>
+            </ul>
+            <button className="edit-dish__container__add-ingredients" onClick={onShowDropDown}> + </button>
           <div> 
               <ul>  
               </ul>
@@ -175,7 +175,7 @@ function EditDishPage(item) {
                   <label for="file-input">Выберите файл</label>
                   <span>или перетащите его сюда</span>
                 </div>
-            </form> */}
+            </form>
              <div className="edit-dish__container__form__card__steps-card">
                 <ul className="edit-dish__container__form__card__steps-card__list">
                   {stepList.map( (item,index) => (
